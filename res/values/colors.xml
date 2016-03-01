@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 透明 -->
+    <color name="transparency">#00000000</color>
+    
+    <color name="blue">#ff0E87F0</color>
+    
+    <color name="green">#ff6BD123</color>
+    <!-- 灰色 -->
+    <color name="dark">#ffA7C0DC</color>
+</resources>

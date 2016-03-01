@@ -5,11 +5,30 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
-        android:textSize="40sp"
-        android:background="#aaffff"
+        android:textColor="#000000"
+        android:layout_width="match_parent"
+        android:layout_height="45sp"
+        android:background="#5500ffdd"
+        android:gravity="center"
+        android:text="主界面"
+        android:textSize="25sp" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:background="#CEDDED"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:singleLine="true"
+        android:text="完美保护你的手机，让你的手机不在受到外部的风险，千万不要卸载，卸载了你会后悔的。。。。。" />
+
+    <GridView
+        android:listSelector="@color/transparency"
+        android:id="@+id/gv_home_jiugongge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:numColumns="3">
+    </GridView>
 
 </LinearLayout>
