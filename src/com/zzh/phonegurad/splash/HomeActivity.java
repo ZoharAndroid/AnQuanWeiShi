@@ -6,6 +6,7 @@ import com.zzh.shoujiweishi.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -29,6 +30,8 @@ public class HomeActivity extends Activity {
 	public static final String TAG = "HomeActivity";
 	
 	private AlertDialog dialog;
+	
+	private AlertDialog.Builder newDialog;
 	
 	private SharedPreferences sp;//保存设置的密码
 
@@ -115,7 +118,7 @@ public class HomeActivity extends Activity {
 	 */
 	protected void showSetPasswordDialog() {
 		//新建对话框
-		AlertDialog.Builder newDialog = new AlertDialog.Builder(HomeActivity.this);
+		newDialog = new AlertDialog.Builder(HomeActivity.this);
 		
 		View view = View.inflate(HomeActivity.this, R.layout.setpassword_dialog_home, null);
 		//找到布局的控件
@@ -173,19 +176,79 @@ public class HomeActivity extends Activity {
 		dialog = newDialog.create();
 		//显示对话框
 		dialog.show(); 
-		
 	}
 
 	/**
 	 * 如果设置了密码，就弹出输入密码对话框
 	 */
 	protected void showInputPasswordDialog() {
-		// TODO Auto-generated method stub
+		//初始化对话框
+		newDialog = new AlertDialog.Builder(HomeActivity.this);
+		
+		View view = View.inflate(HomeActivity.this, R.layout.inputpassword_dialog_home, null);
+		//找到该布局中的控件
+		final EditText et_input = (EditText) view.findViewById(R.id.et_dialog_home_input);
+		Button bt_ensureInput = (Button) view.findViewById(R.id.bt_dialog_home_ensureInput);
+		Button bt_cancelInput = (Button) view.findViewById(R.id.bt_dialog_home_cancelInput);
+		/**
+		 * 确认密码
+		 */
+		bt_ensureInput.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//获取输入框中的密码
+				String inputPassword = et_input.getText().toString().trim();
+				//判断是否输入了密码
+				if(TextUtils.isEmpty(inputPassword)){
+					ShowToast.showToast(HomeActivity.this, "密码不能为空", 0);	
+					return;
+				}
+				
+				//获取sp中存储的密码值
+				String password = sp.getString(MyContasts.PASSWORD, "null");
+				if(password.equals(inputPassword)){//输入密码相等
+					//跳转到手机防盗界面
+					loadPhoneLostFind();
+					dialog.dismiss();
+				}else{
+					//密码不正确
+					ShowToast.showToast(HomeActivity.this, "输入的密码有误，请重新输入", 0);
+					et_input.setText("");//清空密码框
+				}
+			}
+		});
+		/**
+		 * 取消输入
+		 */
+		bt_cancelInput.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//撤销对话框
+				dialog.dismiss();
+			}
+		});
+		
+		
+		newDialog.setView(view);
+		
+		dialog=newDialog.create();
+		dialog.show();
+	}
+
+
+	/**
+	 * 跳转到手机防盗界面
+	 */
+	protected void loadPhoneLostFind() {
+		Intent intent = new Intent(HomeActivity.this, PhoneLostFindActivity.class);
+		startActivity(intent);
 		
 	}
 
 
-	
+
 	/**
 	 * 创建一个GridView配置器
 	 * 

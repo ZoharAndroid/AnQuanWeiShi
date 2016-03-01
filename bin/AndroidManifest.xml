@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.zzh.phonegurad.splash.HomeActivity"></activity>
+        <activity android:name="com.zzh.phonegurad.splash.PhoneLostFindActivity"></activity>
     </application>
 
 </manifest>
