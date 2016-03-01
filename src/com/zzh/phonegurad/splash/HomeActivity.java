@@ -1,6 +1,7 @@
 package com.zzh.phonegurad.splash;
 
 import com.zzh.phoneguard.utils.LogUtil;
+import com.zzh.phoneguard.utils.MD5Util;
 import com.zzh.phoneguard.utils.ShowToast;
 import com.zzh.shoujiweishi.R;
 
@@ -144,7 +145,7 @@ public class HomeActivity extends Activity {
 					//保存密码
 					sp = getSharedPreferences(MyContasts.SPNAME, MODE_PRIVATE);
 					Editor editor = sp.edit();
-					editor.putString(MyContasts.PASSWORD, passwordOne);
+					editor.putString(MyContasts.PASSWORD, MD5Util.MD5Lock(passwordOne));
 					editor.commit();
 					ShowToast.showToast(HomeActivity.this, "密码保存成功", 0);
 					//然后销毁对话框
@@ -206,8 +207,8 @@ public class HomeActivity extends Activity {
 				}
 				
 				//获取sp中存储的密码值
-				String password = sp.getString(MyContasts.PASSWORD, "null");
-				if(password.equals(inputPassword)){//输入密码相等
+				String password =sp.getString(MyContasts.PASSWORD, "null");
+				if(MD5Util.MD5Lock(inputPassword).equals(password)){//输入密码相等
 					//跳转到手机防盗界面
 					loadPhoneLostFind();
 					dialog.dismiss();
