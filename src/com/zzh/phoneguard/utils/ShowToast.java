@@ -6,10 +6,10 @@ import android.widget.Toast;
 public class ShowToast {
 	public static void showToast(final Activity context, final String text, final int duration){
 		if(Thread.currentThread().getName().equals("main")){
-			//如果在主线程main中，直接toast显示
+			//濡傛灉鍦ㄤ富绾跨▼
 			Toast.makeText(context, text, duration).show();
 		}else{
-			//在子线程中，则运行在
+			//濡傛灉鍦ㄥ瓙绾跨▼
 			context.runOnUiThread(new Runnable() {
 				
 				@Override

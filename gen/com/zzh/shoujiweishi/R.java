@@ -24,19 +24,26 @@ public final class R {
         public static final int app=0x7f020000;
         public static final int app_pressed=0x7f020001;
         public static final int atools=0x7f020002;
-        public static final int callmsgsafe=0x7f020003;
-        public static final int color_selector=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int icon_selector=0x7f020006;
-        public static final int luncher_bg=0x7f020007;
-        public static final int netmanager=0x7f020008;
-        public static final int safe=0x7f020009;
-        public static final int settings=0x7f02000a;
-        public static final int sysoptimize=0x7f02000b;
-        public static final int taskmanager=0x7f02000c;
-        public static final int trojan=0x7f02000d;
+        public static final int btn_green_normal=0x7f020003;
+        public static final int btn_green_pressed=0x7f020004;
+        public static final int button_selection=0x7f020005;
+        public static final int callmsgsafe=0x7f020006;
+        public static final int color_selector=0x7f020007;
+        public static final int ic_launcher=0x7f020008;
+        public static final int icon_selector=0x7f020009;
+        public static final int luncher_bg=0x7f02000a;
+        public static final int netmanager=0x7f02000b;
+        public static final int safe=0x7f02000c;
+        public static final int settings=0x7f02000d;
+        public static final int sysoptimize=0x7f02000e;
+        public static final int taskmanager=0x7f02000f;
+        public static final int trojan=0x7f020010;
     }
     public static final class id {
+        public static final int bt_dialog_home_cancelPassword=0x7f07000a;
+        public static final int bt_dialog_home_setPassword=0x7f070009;
+        public static final int et_dialog_home_password1=0x7f070007;
+        public static final int et_dialog_home_password2=0x7f070008;
         public static final int gv_home_jiugongge=0x7f070000;
         public static final int iv_griadview_item_icon=0x7f070001;
         public static final int pb_splash_download=0x7f070006;
@@ -49,6 +56,7 @@ public final class R {
         public static final int activity_home=0x7f030000;
         public static final int item_home_gridview=0x7f030001;
         public static final int layout_splash=0x7f030002;
+        public static final int setpassword_dialog_home=0x7f030003;
     }
     public static final class string {
         public static final int app_name=0x7f050001;
