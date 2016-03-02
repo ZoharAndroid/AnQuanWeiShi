@@ -3,11 +3,13 @@ package com.zzh.phonegurad.splash;
 import com.zzh.shoujiweishi.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-public class Setup4Activity extends Activity {
+public class Setup4Activity extends SetupXBaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -17,4 +19,16 @@ public class Setup4Activity extends Activity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activiy_setup4);
 	}
+
+	@Override
+	public void previousEvent() {
+		startActivityAndFinish(Setup3Activity.class);
+	}
+
+	@Override
+	public void nextEvent() {
+		startActivityAndFinish(PhoneLostFindActivity.class);
+	}
+	
+	
 }

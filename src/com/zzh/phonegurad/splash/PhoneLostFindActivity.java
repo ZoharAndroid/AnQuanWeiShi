@@ -32,6 +32,7 @@ public class PhoneLostFindActivity extends Activity {
 	private void loadSetup1View() {
 		Intent intent =  new Intent(PhoneLostFindActivity.this, Setup1Activity.class);
 		startActivity(intent);
+		finish();
 	}
 
 	private void initView() {

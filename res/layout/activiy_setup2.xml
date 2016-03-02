@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dip"
         android:background="@drawable/button_selection"
-        android:drawableRight="@drawable/unlock"
+        android:drawableRight="@drawable/lock"
         android:gravity="center_vertical|left"
         android:text="点击 绑定/解绑 SIM卡" />
 
@@ -79,6 +79,7 @@
             android:src="@drawable/bind" />
         
          <Button
+            android:onClick="previousSetup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -88,6 +89,7 @@
             android:text="上一步" />
 
         <Button
+            android:onClick="nextSetup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

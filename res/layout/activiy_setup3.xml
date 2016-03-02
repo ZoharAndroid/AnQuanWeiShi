@@ -83,6 +83,7 @@
             android:src="@drawable/phone" />
 
         <Button
+            android:onClick="previousSetup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -92,6 +93,7 @@
             android:text="上一步" />
 
         <Button
+            android:onClick="nextSetup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

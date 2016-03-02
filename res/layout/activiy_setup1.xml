@@ -141,6 +141,7 @@
             android:src="@drawable/setup1" />
 
         <Button
+            android:onClick="nextSetup"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:drawableRight="@drawable/next"

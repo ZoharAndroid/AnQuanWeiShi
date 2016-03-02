@@ -1,13 +1,12 @@
 package com.zzh.phonegurad.splash;
 
-import com.zzh.shoujiweishi.R;
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-public class Setup1Activity extends Activity {
+import com.zzh.shoujiweishi.R;
+
+public class Setup1Activity extends SetupXBaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -16,5 +15,18 @@ public class Setup1Activity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activiy_setup1);
+	}
+	
+	
+
+	@Override
+	public void previousEvent() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void nextEvent() {
+		startActivityAndFinish(Setup2Activity.class);
 	}
 }
