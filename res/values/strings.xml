@@ -1,5 +1,7 @@
 <resources>
 
     <string name="app_name">ShoujiWeiShi</string>
+    <string name="sample_device_admin_description">能够控制手机远程锁屏、发出报警声和清空sdcard内容</string>
+    <string name="sample_device_admin">手机安全卫士</string>
 
 </resources>

@@ -19,6 +19,7 @@
         android:layout_marginTop="8dip" >
 
         <TextView
+           
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dip"
@@ -26,6 +27,7 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/tv_phonelostfind_showSafeNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -75,11 +77,14 @@
         android:layout_marginTop="8dip" >
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:onClick="tv__restartSet"
+            android:clickable="true"
+            android:background="@drawable/color_selector"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dip"
-            android:gravity="center"
             android:text="重新进入设置向导"
             android:textSize="18sp" />
     </RelativeLayout>

@@ -14,12 +14,14 @@
         android:textSize="28sp" />
 
     <CheckBox
+        android:id="@+id/cb_setup4_openProtect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dip"
         android:text="勾选，开启防盗保护" />
 
     <TextView
+        android:id="@+id/tv_setup4_openProtect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dip"

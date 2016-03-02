@@ -30,14 +30,26 @@
         android:textColor="#aa000000"
         android:textSize="16sp" />
 
-    <Button
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dip"
-        android:background="@drawable/button_selection"
-        android:drawableRight="@drawable/lock"
-        android:gravity="center_vertical|left"
-        android:text="点击 绑定/解绑 SIM卡" />
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:onClick="bindSIMCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dip"
+            android:background="@drawable/button_selection"
+            android:gravity="center_vertical|left"
+            android:text="点击 绑定/解绑 SIM卡" />
+
+        <ImageView 
+            android:id="@+id/iv_setup2_lockIcon"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/unlock"/>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -77,25 +89,25 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:src="@drawable/bind" />
-        
-         <Button
-            android:onClick="previousSetup"
+
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:background="@drawable/button_selection"
             android:drawableLeft="@drawable/previous"
+            android:onClick="previousSetup"
             android:text="上一步" />
 
         <Button
-            android:onClick="nextSetup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/button_selection"
             android:drawableRight="@drawable/next"
+            android:onClick="nextSetup"
             android:text="下一步" />
     </RelativeLayout>
 
