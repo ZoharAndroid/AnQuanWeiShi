@@ -24,20 +24,27 @@ public final class R {
         public static final int app=0x7f020000;
         public static final int app_pressed=0x7f020001;
         public static final int atools=0x7f020002;
-        public static final int btn_green_normal=0x7f020003;
-        public static final int btn_green_pressed=0x7f020004;
-        public static final int button_selection=0x7f020005;
-        public static final int callmsgsafe=0x7f020006;
-        public static final int color_selector=0x7f020007;
-        public static final int ic_launcher=0x7f020008;
-        public static final int icon_selector=0x7f020009;
-        public static final int luncher_bg=0x7f02000a;
-        public static final int netmanager=0x7f02000b;
-        public static final int safe=0x7f02000c;
-        public static final int settings=0x7f02000d;
-        public static final int sysoptimize=0x7f02000e;
-        public static final int taskmanager=0x7f02000f;
-        public static final int trojan=0x7f020010;
+        public static final int bind=0x7f020003;
+        public static final int btn_green_normal=0x7f020004;
+        public static final int btn_green_pressed=0x7f020005;
+        public static final int button_selection=0x7f020006;
+        public static final int callmsgsafe=0x7f020007;
+        public static final int color_selector=0x7f020008;
+        public static final int ic_launcher=0x7f020009;
+        public static final int icon_selector=0x7f02000a;
+        public static final int lock=0x7f02000b;
+        public static final int luncher_bg=0x7f02000c;
+        public static final int netmanager=0x7f02000d;
+        public static final int next=0x7f02000e;
+        public static final int phone=0x7f02000f;
+        public static final int previous=0x7f020010;
+        public static final int safe=0x7f020011;
+        public static final int settings=0x7f020012;
+        public static final int setup1=0x7f020013;
+        public static final int sysoptimize=0x7f020014;
+        public static final int taskmanager=0x7f020015;
+        public static final int trojan=0x7f020016;
+        public static final int unlock=0x7f020017;
     }
     public static final class id {
         public static final int bt_dialog_home_cancelInput=0x7f070004;
@@ -59,10 +66,14 @@ public final class R {
     public static final class layout {
         public static final int activity_home=0x7f030000;
         public static final int activity_phonelostfind=0x7f030001;
-        public static final int inputpassword_dialog_home=0x7f030002;
-        public static final int item_home_gridview=0x7f030003;
-        public static final int layout_splash=0x7f030004;
-        public static final int setpassword_dialog_home=0x7f030005;
+        public static final int activiy_setup1=0x7f030002;
+        public static final int activiy_setup2=0x7f030003;
+        public static final int activiy_setup3=0x7f030004;
+        public static final int activiy_setup4=0x7f030005;
+        public static final int inputpassword_dialog_home=0x7f030006;
+        public static final int item_home_gridview=0x7f030007;
+        public static final int layout_splash=0x7f030008;
+        public static final int setpassword_dialog_home=0x7f030009;
     }
     public static final class string {
         public static final int app_name=0x7f050001;

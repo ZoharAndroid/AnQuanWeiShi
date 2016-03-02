@@ -248,10 +248,8 @@ public class HomeActivity extends Activity {
 		
 	}
 
-
-
-	/**
-	 * 创建一个GridView配置器
+	
+	/* 创建一个GridView配置器
 	 * 
 	 * @author Administrator
 	 * 
