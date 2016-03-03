@@ -1,5 +1,6 @@
 package com.zzh.phoneguard.receiver;
 
+import com.zzh.phoneguard.service.LocationService;
 import com.zzh.shoujiweishi.R;
 
 import android.app.admin.DevicePolicyManager;
@@ -39,6 +40,10 @@ public class SmsMessageRecevier extends BroadcastReceiver {
 				abortBroadcast();
 			} else if (smsBody.equals("#*location*#")) {// 接收发送地址的信息
 				System.out.println("#*location*#");
+				//开启获取gps服务
+				Intent intentService = new Intent(context, LocationService.class);
+				context.startService(intentService);
+				
 				abortBroadcast();
 			} else if (smsBody.equals("#*wipedata*#")) {// 接收清除数据
 				mDPM.wipeData(DevicePolicyManager.WIPE_EXTERNAL_STORAGE);
