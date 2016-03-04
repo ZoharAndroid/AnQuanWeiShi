@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:setting="http://schemas.android.com/apk/res/com.zzh.shoujiweishi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="#5500ffdd"
+        android:gravity="center"
+        android:text="设置中心"
+        android:textColor="#000000"
+        android:textSize="28sp" />
+
+    <com.zzh.phoneguard.view.ItemSettingLayout
+        android:id="@+id/isl_setting_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        setting:content="自动更新已经关闭@自动更新已经关闭"
+        setting:title="自动更新设置" />
+
+    <com.zzh.phoneguard.view.ItemSettingLayout
+        android:id="@+id/isl_setting_lanjie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        setting:content="开机启动拦截关闭@开机启动拦截开启"
+        setting:title="开启启动拦截" />
+
+    <com.zzh.phoneguard.view.ItemSettingLayout
+        android:id="@+id/isl_setting_black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        setting:content="黑名单拦截关闭@黑名单拦截开启"
+        setting:title="黑名单拦截设置" />
+
+    <com.zzh.phoneguard.view.ItemSettingLayout
+        android:id="@+id/isl_setting_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        setting:content="电话归属地设置关闭@电话归属地设置开启"
+        setting:title="电话归属地设置" />
+
+    <com.zzh.phoneguard.view.ItemSettingLayout
+        android:id="@+id/isl_setting_watchdog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        setting:content="看门狗服务关闭@看门狗服务开启"
+        setting:title="看门狗设置中心" />
+
+</LinearLayout>

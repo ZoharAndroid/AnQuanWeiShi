@@ -7,4 +7,5 @@ public interface MyContasts {
 	String BINDSIMCARD = "BindSIMCard";//SIM卡绑定
 	String SAFENUMBER = "SafePhoneNumber";//安全号码
 	String ISCHECKBOXOPEN = "IsCheckBoxOpen";//判断手机保护是否勾选
+	String ISAUTOUPDATA = "IsAutoUpdata";//是否自动更新
 }

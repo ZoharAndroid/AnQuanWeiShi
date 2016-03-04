@@ -9,6 +9,22 @@ package com.zzh.shoujiweishi;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int content=0x7f010001;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int title=0x7f010000;
     }
     public static final class color {
         public static final int blue=0x7f060001;
@@ -32,56 +48,70 @@ public final class R {
         public static final int color_selector=0x7f020008;
         public static final int ic_launcher=0x7f020009;
         public static final int icon_selector=0x7f02000a;
-        public static final int lock=0x7f02000b;
-        public static final int luncher_bg=0x7f02000c;
-        public static final int netmanager=0x7f02000d;
-        public static final int next=0x7f02000e;
-        public static final int next_in_setup=0x7f02000f;
-        public static final int next_out_setup=0x7f020010;
-        public static final int phone=0x7f020011;
-        public static final int previous=0x7f020012;
-        public static final int previous_in_setup=0x7f020013;
-        public static final int previous_out_setup=0x7f020014;
-        public static final int safe=0x7f020015;
-        public static final int settings=0x7f020016;
-        public static final int setup1=0x7f020017;
-        public static final int sysoptimize=0x7f020018;
-        public static final int taskmanager=0x7f020019;
-        public static final int trojan=0x7f02001a;
-        public static final int unlock=0x7f02001b;
+        public static final int list_devider=0x7f02000b;
+        public static final int lock=0x7f02000c;
+        public static final int luncher_bg=0x7f02000d;
+        public static final int netmanager=0x7f02000e;
+        public static final int next=0x7f02000f;
+        public static final int next_in_setup=0x7f020010;
+        public static final int next_out_setup=0x7f020011;
+        public static final int phone=0x7f020012;
+        public static final int previous=0x7f020013;
+        public static final int previous_in_setup=0x7f020014;
+        public static final int previous_out_setup=0x7f020015;
+        public static final int safe=0x7f020016;
+        public static final int settings=0x7f020017;
+        public static final int setup1=0x7f020018;
+        public static final int sysoptimize=0x7f020019;
+        public static final int taskmanager=0x7f02001a;
+        public static final int trojan=0x7f02001b;
+        public static final int unlock=0x7f02001c;
     }
     public static final class id {
-        public static final int bt_dialog_home_cancelInput=0x7f090008;
-        public static final int bt_dialog_home_cancelPassword=0x7f090012;
-        public static final int bt_dialog_home_ensureInput=0x7f090007;
-        public static final int bt_dialog_home_setPassword=0x7f090011;
-        public static final int cb_setup4_openProtect=0x7f090004;
-        public static final int et_dialog_home_input=0x7f090006;
-        public static final int et_dialog_home_password1=0x7f09000f;
-        public static final int et_dialog_home_password2=0x7f090010;
-        public static final int et_setup3_safeNumber=0x7f090003;
+        public static final int bt_dialog_home_cancelInput=0x7f09000d;
+        public static final int bt_dialog_home_cancelPassword=0x7f09001c;
+        public static final int bt_dialog_home_ensureInput=0x7f09000c;
+        public static final int bt_dialog_home_setPassword=0x7f09001b;
+        public static final int cb_item_setteing_open=0x7f090012;
+        public static final int cb_setup4_openProtect=0x7f090009;
+        public static final int et_dialog_home_input=0x7f09000b;
+        public static final int et_dialog_home_password1=0x7f090019;
+        public static final int et_dialog_home_password2=0x7f09001a;
+        public static final int et_setup3_safeNumber=0x7f090008;
         public static final int gv_home_jiugongge=0x7f090000;
-        public static final int iv_griadview_item_icon=0x7f090009;
-        public static final int iv_setup2_lockIcon=0x7f090002;
-        public static final int pb_splash_download=0x7f09000e;
-        public static final int progressBar1=0x7f09000d;
-        public static final int rl_splash_root=0x7f09000b;
-        public static final int tv_griadview_item_iconName=0x7f09000a;
+        public static final int isl_setting_black=0x7f090004;
+        public static final int isl_setting_lanjie=0x7f090003;
+        public static final int isl_setting_location=0x7f090005;
+        public static final int isl_setting_update=0x7f090002;
+        public static final int isl_setting_watchdog=0x7f090006;
+        public static final int iv_griadview_item_icon=0x7f09000e;
+        public static final int iv_setup2_lockIcon=0x7f090007;
+        public static final int pb_splash_download=0x7f090018;
+        public static final int progressBar1=0x7f090017;
+        public static final int rl_splash_root=0x7f090015;
+        public static final int tv_griadview_item_iconName=0x7f09000f;
+        public static final int tv_item_contacts_name=0x7f090013;
+        public static final int tv_item_contacts_number=0x7f090014;
+        public static final int tv_item_setting_desc=0x7f090011;
+        public static final int tv_item_setting_title=0x7f090010;
         public static final int tv_phonelostfind_showSafeNumber=0x7f090001;
-        public static final int tv_setup4_openProtect=0x7f090005;
-        public static final int tv_splash_versionNumber=0x7f09000c;
+        public static final int tv_setup4_openProtect=0x7f09000a;
+        public static final int tv_splash_versionNumber=0x7f090016;
     }
     public static final class layout {
         public static final int activity_home=0x7f030000;
         public static final int activity_phonelostfind=0x7f030001;
-        public static final int activiy_setup1=0x7f030002;
-        public static final int activiy_setup2=0x7f030003;
-        public static final int activiy_setup3=0x7f030004;
-        public static final int activiy_setup4=0x7f030005;
-        public static final int inputpassword_dialog_home=0x7f030006;
-        public static final int item_home_gridview=0x7f030007;
-        public static final int layout_splash=0x7f030008;
-        public static final int setpassword_dialog_home=0x7f030009;
+        public static final int activity_setting=0x7f030002;
+        public static final int activiy_setup1=0x7f030003;
+        public static final int activiy_setup2=0x7f030004;
+        public static final int activiy_setup3=0x7f030005;
+        public static final int activiy_setup4=0x7f030006;
+        public static final int inputpassword_dialog_home=0x7f030007;
+        public static final int item_home_gridview=0x7f030008;
+        public static final int item_setting=0x7f030009;
+        public static final int itme_contactslist_listactivity=0x7f03000a;
+        public static final int layout_splash=0x7f03000b;
+        public static final int setpassword_dialog_home=0x7f03000c;
     }
     public static final class raw {
         public static final int music=0x7f050000;
@@ -123,4 +153,49 @@ public final class R {
     public static final class xml {
         public static final int device_admin_sample=0x7f040000;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a SettingView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #SettingView_content com.zzh.shoujiweishi:content}</code></td><td></td></tr>
+           <tr><td><code>{@link #SettingView_title com.zzh.shoujiweishi:title}</code></td><td></td></tr>
+           </table>
+           @see #SettingView_content
+           @see #SettingView_title
+         */
+        public static final int[] SettingView = {
+            0x7f010000, 0x7f010001
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.zzh.shoujiweishi.R.attr#content}
+          attribute's value can be found in the {@link #SettingView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.zzh.shoujiweishi:content
+        */
+        public static final int SettingView_content = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.zzh.shoujiweishi.R.attr#title}
+          attribute's value can be found in the {@link #SettingView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.zzh.shoujiweishi:title
+        */
+        public static final int SettingView_title = 0;
+    };
 }

@@ -88,7 +88,10 @@ public class HomeActivity extends Activity {
 						showSetPasswordDialog();
 					}
 					break;
-
+				case 8://进入设置中心
+					Intent settingIntent = new Intent(HomeActivity.this, SettingActivity.class);
+					startActivity(settingIntent);
+					break;
 				default:
 					break;
 				}

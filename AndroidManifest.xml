@@ -13,8 +13,10 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -42,6 +44,10 @@
         </activity>
         <activity android:name="com.zzh.phonegurad.splash.Setup4Activity" >
         </activity>
+        <activity android:name="com.zzh.phonegurad.splash.ListContactsActvity" >
+        </activity>
+        <activity android:name="com.zzh.phonegurad.splash.SettingActivity" >
+        </activity>
 
         <!-- 广播接收器 -->
         <receiver android:name="com.zzh.phoneguard.receiver.SmsMessageRecevier" >
@@ -49,7 +55,11 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-        
+        <receiver android:name="com.zzh.phoneguard.receiver.BootCompleteRecevier" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
         <receiver
             android:name="com.zzh.phoneguard.receiver.MyDeviceAdminReceiver"
             android:description="@string/sample_device_admin_description"
@@ -63,8 +73,9 @@
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
-        
-        <service android:name="com.zzh.phoneguard.service.LocationService"></service>
+
+        <service android:name="com.zzh.phoneguard.service.LocationService" >
+        </service>
     </application>
 
 </manifest>

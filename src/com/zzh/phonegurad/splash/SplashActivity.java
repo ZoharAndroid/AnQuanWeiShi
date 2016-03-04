@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -53,6 +54,8 @@ public class SplashActivity extends Activity {
 	private RelativeLayout rl_root;
 	private TextView tv_versionNumber;
 	private ProgressBar pb_download;
+	
+	private SharedPreferences sp;
 
 	/**
 	 * 消息处理机制
@@ -190,7 +193,20 @@ public class SplashActivity extends Activity {
 		initView(); // 初始化layout中的控件
 		initVersionNumber();// 设置界面中的版本号，从包的类容中读取版本信息
 		startSplashAnimation();// 开始splash界面的动画效果
-		checkVersion();// 连接网络，检查版本信息
+		initData();
+		//读取sp中的自动加载的标志
+		if(sp.getBoolean(MyContasts.ISAUTOUPDATA, true)){
+			checkVersion();// 连接网络，检查版本信息
+		}else{
+			loadMain();
+		}
+	}
+
+	/**
+	 * 初始化数据
+	 */
+	private void initData() {
+		sp = getSharedPreferences(MyContasts.SPNAME, MODE_PRIVATE);
 	}
 
 	/**
