@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zzh.shoujiweishi.R;
@@ -17,6 +19,8 @@ public class PhoneLostFindActivity extends Activity {
 
 	private SharedPreferences sp;
 
+	private RelativeLayout rl_menu;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -69,5 +73,35 @@ public class PhoneLostFindActivity extends Activity {
 		setContentView(R.layout.activity_phonelostfind);
 
 		tv_showSafeNumber = (TextView) findViewById(R.id.tv_phonelostfind_showSafeNumber);
+		
+		rl_menu = (RelativeLayout) findViewById(R.id.rl_lostfind_menu);
+		
+	}
+	
+	/**
+	 * 创建一个菜单
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		//自定义菜单必须要添加一个空的菜单
+		menu.add("");
+		return true;
+	}
+	
+	private boolean result = false;
+	/**
+	 * 自定义菜单的时候一定要这个方法的返回值设置为fasle
+	 * true：调用的是系统菜单
+	 * false：调用的是自定义菜单
+	 */
+	@Override
+	public boolean onMenuOpened(int featureId, Menu menu) {
+		result = ! result;
+		if(result){
+			rl_menu.setVisibility(View.VISIBLE);
+		}else{
+			rl_menu.setVisibility(View.INVISIBLE);
+		}
+		return false;
 	}
 }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="#5500ffdd"
+        android:gravity="center"
+        android:text="通讯卫士"
+        android:textColor="#000000"
+        android:textSize="28sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:id="@+id/rl_smstel_loadingData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" >
+
+            <!-- 正在加载数据界面 -->
+
+            <ProgressBar
+                android:id="@+id/pb_smstel_progress"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pb_smstel_progress"
+                android:layout_centerHorizontal="true"
+                android:text="正在加载"
+                android:textSize="24sp" />
+        </RelativeLayout>
+
+        <!-- 无数据 -->
+
+        <RelativeLayout
+            android:id="@+id/rl_smstel_noData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="无数据"
+                android:textSize="24sp" />
+        </RelativeLayout>
+
+        <!-- 显示数据 -->
+
+        <RelativeLayout
+            android:id="@+id/rl_smstel_showData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <ListView
+                android:id="@+id/lv_smstel_listShowData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fastScrollEnabled="true" >
+            </ListView>
+        </RelativeLayout>
+    </FrameLayout>
+
+</LinearLayout>

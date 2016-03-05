@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:id="@+id/item_modife_lostfind"
+        android:title="修改手机防盗名字"/>
+    
+    <item android:id="@+id/item_show_function"
+       android:title="显示所有功能" />
+</menu>
