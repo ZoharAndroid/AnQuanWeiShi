@@ -217,11 +217,13 @@ public class SmsTelActivity extends Activity {
 				BlacklistMember listMember = new BlacklistMember(blacklistNumber, mode);
 				blackDB = BlacklistNameDB.getInstance(SmsTelActivity.this);
 				blackDB.addBlacklist(listMember);//添加到数据库中
+				//members.add(0, listMember);
 				members.clear();//清空listview内容的容器
 				//重新加载数据
 				members = blackDB.queryBlacklist();
 				//通知适配器重新加载数据
-				adapter.notifyDataSetChanged();
+				lv_listShowData.setSelection(members.size());
+				//adapter.notifyDataSetChanged(); //这个会让界面不会跳动到开始
 				dialog.dismiss();
 			}
 		});
