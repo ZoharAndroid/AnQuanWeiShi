@@ -101,6 +101,7 @@ public class BlacklistNameDB {
 		}
 		return false;
 	}
+	
 	/**
 	 * 添加数据
 	 * @param member 黑名单成员
@@ -110,6 +111,10 @@ public class BlacklistNameDB {
 		return updataBlacklist(member.getBlacklistNumber(), member.getMode());
 	}
 	
+	/**
+	 * 查询所有数据
+	 * @return	查询到的数据内容
+	 */
 	public List<BlacklistMember> queryBlacklist(){
 		List<BlacklistMember> members = new ArrayList<BlacklistMember>();
 		Cursor cursor=db.query(TABLENAME, null, null, null, null, null, null);
@@ -120,5 +125,26 @@ public class BlacklistNameDB {
 			members.add(member);
 		}
 		return members;
+	}
+	
+	public List<BlacklistMember> getMember(String startIndex, String number){
+		List<BlacklistMember> listMember = new ArrayList<BlacklistMember>();
+		//db.query(TABLENAME, new String[]{BlacklistMember.BLACKLISTNUMBER,BlacklistMember.BLACKLISTMODE}, BlacklistMember.BLACKLISTNUMBER+"=? ", selectionArgs, groupBy, having, orderBy, limit)
+		Cursor cursor = db.rawQuery("select"+BlacklistMember.BLACKLISTNUMBER+","+BlacklistMember.BLACKLISTMODE+"from"+TABLENAME+" limit ? ,?", new String[]{startIndex,number});
+		while(cursor.moveToNext()){
+			int mode = cursor.getInt(1);
+			String blackNumber = cursor.getString(0);
+			BlacklistMember member = new BlacklistMember(blackNumber, mode);
+			listMember.add(member);
+		}
+		
+		return listMember;
+	}
+	
+	public int getTotal(){
+		Cursor cursor = db.rawQuery("select count(1) from "+TABLENAME, null);
+		cursor.moveToNext();
+		int rows = cursor.getInt(0);
+		return rows;
 	}
 }

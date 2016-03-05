@@ -3,24 +3,33 @@ package com.zzh.phonegurad.splash;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.zzh.phoneguard.dao.BlacklistNameDB;
-import com.zzh.phoneguard.domain.BlacklistMember;
-import com.zzh.phoneguard.utils.ShowToast;
-import com.zzh.shoujiweishi.R;
-
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.zzh.phoneguard.dao.BlacklistNameDB;
+import com.zzh.phoneguard.domain.BlacklistMember;
+import com.zzh.phoneguard.utils.ShowToast;
+import com.zzh.shoujiweishi.R;
 /**
  * 电话和短信拦截
  * @author Administrator
@@ -39,6 +48,10 @@ public class SmsTelActivity extends Activity {
 	private List<BlacklistMember> members = new ArrayList<BlacklistMember>();
 	
 	private MyAdapter adapter;
+	
+	private AlertDialog dialog;
+	
+	private BlacklistNameDB blackDB;
 	
 	private Handler handler = new Handler(){
 		@Override
@@ -64,8 +77,51 @@ public class SmsTelActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		initView();
 		initData();
+		initEvent();
 	}
-
+	
+	/**
+	 * 滑动的效果
+	 */
+	private void initEvent() {
+		lv_listShowData.setOnScrollListener(new OnScrollListener() {
+			/**
+			 * 活动状态的改变
+			 */
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+				switch (scrollState) {
+				case SCROLL_STATE_TOUCH_SCROLL://按着滑动
+					
+					break;
+				case SCROLL_STATE_IDLE://停止时刻
+					int lastVisibleIndex = view.getLastVisiblePosition();//获取最后的位置
+					//判断是否为最后一条数据
+					blackDB = BlacklistNameDB.getInstance(SmsTelActivity.this);
+					if(lastVisibleIndex == (blackDB.getTotal()-1)){
+						ShowToast.showToast(SmsTelActivity.this, "无数据要显示", 0);
+						return;
+					}
+					
+					break;
+				case SCROLL_STATE_FLING://惯性滑动
+					break;
+				default:
+					break;
+				}
+			}
+			/**
+			 * 正在滑动
+			 */
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem,
+					int visibleItemCount, int totalItemCount) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	}
+	
 	private void initData() {
 		//首先显示加载数据的界面
 		rl_loadingData.setVisibility(View.VISIBLE);
@@ -116,6 +172,83 @@ public class SmsTelActivity extends Activity {
 		lv_listShowData.setAdapter(adapter);
 	}
 	
+	/**
+	 * 添加黑名单按键
+	 * 
+	 * @param view
+	 */
+	public void addBlacklist(View view){
+		//一点击，就弹出对话框，进行添加
+		AlertDialog.Builder blackDialog = new AlertDialog.Builder(SmsTelActivity.this);
+		View dialogView = View.inflate(SmsTelActivity.this, R.layout.setblacklist_dialog_smstel, null);
+		
+		//找到该对话框中的控件
+		final EditText et_setBlack = (EditText) dialogView.findViewById(R.id.et_dialog_smstel_blackNumber);
+		final CheckBox cb_setSms = (CheckBox) dialogView.findViewById(R.id.cb_dialog_smstel_setSms);
+		final CheckBox cb_setPhone = (CheckBox) dialogView.findViewById(R.id.cb_dialog_smstel_setPhone);
+		
+		Button et_sureSetBlack = (Button) dialogView.findViewById(R.id.bt_dialog_smstel_sureSetBlack);
+		/**
+		 * 按键：确定设置黑名单
+		 */
+		et_sureSetBlack.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//先判断用户是否输入了黑名单号码
+				String blacklistNumber = et_setBlack.getText().toString().trim();
+				if(TextUtils.isEmpty(blacklistNumber)){
+					//如果用户没有设置黑名单
+					ShowToast.showToast(SmsTelActivity.this, "请输入要拦截的手机号", 0);
+					return;
+				}
+				//判断复选框是否输入了
+				int mode = 0;
+				if(cb_setSms.isChecked()){
+					mode |= BlacklistMember.BLACK_SMS;
+				}else if(cb_setPhone.isChecked()){
+					mode |= BlacklistMember.BLACK_PHONE;
+				}
+				if(mode==0){
+					ShowToast.showToast(SmsTelActivity.this, "请选择一种或两种拦截方式", 0);
+					return;
+				}
+				//保存数据
+				BlacklistMember listMember = new BlacklistMember(blacklistNumber, mode);
+				blackDB = BlacklistNameDB.getInstance(SmsTelActivity.this);
+				blackDB.addBlacklist(listMember);//添加到数据库中
+				members.clear();//清空listview内容的容器
+				//重新加载数据
+				members = blackDB.queryBlacklist();
+				//通知适配器重新加载数据
+				adapter.notifyDataSetChanged();
+				dialog.dismiss();
+			}
+		});
+		
+		/**
+		 * 按键：取消黑名单设置
+		 */
+		Button et_cancelSetBlack = (Button) dialogView.findViewById(R.id.bt_dialog_smstel_cancelSetBlack);
+		et_cancelSetBlack.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+		
+		blackDialog.setView(dialogView);
+		dialog = blackDialog.create();
+		dialog.show();
+	}
+	
+	/**
+	 * 自定义适配器
+	 * 
+	 * @author Administrator
+	 *
+	 */
 	private class MyAdapter extends BaseAdapter{
 
 		@Override
@@ -125,7 +258,7 @@ public class SmsTelActivity extends Activity {
 		
 		
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(final int position, View convertView, ViewGroup parent) {
 			ViewHolder holder = null;
 			if(convertView == null ){
 				convertView = View.inflate(SmsTelActivity.this, R.layout.item_smstel, null);
@@ -154,6 +287,31 @@ public class SmsTelActivity extends Activity {
 			default:
 				break;
 			}
+			//设置删除图标的点击事件
+			holder.iv_deleteIcon.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					blackDB = BlacklistNameDB.getInstance(SmsTelActivity.this);
+					AlertDialog.Builder notineDialog = new AlertDialog.Builder(SmsTelActivity.this);
+					notineDialog.setTitle("提醒：");
+					notineDialog.setMessage("确认删除:"+ members.get(position).getBlacklistNumber()+"?");
+					notineDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							blackDB.removeBlacklist(members.get(position));//数据库中清除该内容
+							//清空容器
+							members.clear();
+							//重新加载容器
+							members = blackDB.queryBlacklist();
+							adapter.notifyDataSetChanged();
+						}
+					});
+					notineDialog.setNegativeButton("取消", null);
+					notineDialog.show();
+				}
+			});
 			return convertView;
 		}
 		@Override

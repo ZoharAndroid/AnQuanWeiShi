@@ -72,17 +72,22 @@ containing a value of this type.
     }
     public static final class id {
         public static final int bt_dialog_home_cancelInput=0x7f0a0013;
-        public static final int bt_dialog_home_cancelPassword=0x7f0a0028;
+        public static final int bt_dialog_home_cancelPassword=0x7f0a002d;
         public static final int bt_dialog_home_cancelmodif=0x7f0a0024;
         public static final int bt_dialog_home_ensureInput=0x7f0a0012;
-        public static final int bt_dialog_home_setPassword=0x7f0a0027;
+        public static final int bt_dialog_home_setPassword=0x7f0a002c;
         public static final int bt_dialog_home_suremodif=0x7f0a0023;
+        public static final int bt_dialog_smstel_cancelSetBlack=0x7f0a0029;
+        public static final int bt_dialog_smstel_sureSetBlack=0x7f0a0028;
+        public static final int cb_dialog_smstel_setPhone=0x7f0a0027;
+        public static final int cb_dialog_smstel_setSms=0x7f0a0026;
         public static final int cb_item_setteing_open=0x7f0a0018;
         public static final int cb_setup4_openProtect=0x7f0a000f;
         public static final int et_dialog_home_input=0x7f0a0011;
         public static final int et_dialog_home_modifname=0x7f0a0022;
-        public static final int et_dialog_home_password1=0x7f0a0025;
-        public static final int et_dialog_home_password2=0x7f0a0026;
+        public static final int et_dialog_home_password1=0x7f0a002a;
+        public static final int et_dialog_home_password2=0x7f0a002b;
+        public static final int et_dialog_smstel_blackNumber=0x7f0a0025;
         public static final int et_setup3_safeNumber=0x7f0a000e;
         public static final int gv_home_jiugongge=0x7f0a0000;
         public static final int isl_setting_black=0x7f0a0005;
@@ -90,8 +95,8 @@ containing a value of this type.
         public static final int isl_setting_location=0x7f0a0006;
         public static final int isl_setting_update=0x7f0a0003;
         public static final int isl_setting_watchdog=0x7f0a0007;
-        public static final int item_modife_lostfind=0x7f0a0029;
-        public static final int item_show_function=0x7f0a002a;
+        public static final int item_modife_lostfind=0x7f0a002e;
+        public static final int item_show_function=0x7f0a002f;
         public static final int iv_griadview_item_icon=0x7f0a0014;
         public static final int iv_item_smstel_deleteicon=0x7f0a001b;
         public static final int iv_setup2_lockIcon=0x7f0a000d;
@@ -131,7 +136,8 @@ containing a value of this type.
         public static final int itme_contactslist_listactivity=0x7f03000c;
         public static final int layout_splash=0x7f03000d;
         public static final int modiffindname_dialog_home=0x7f03000e;
-        public static final int setpassword_dialog_home=0x7f03000f;
+        public static final int setblacklist_dialog_smstel=0x7f03000f;
+        public static final int setpassword_dialog_home=0x7f030010;
     }
     public static final class menu {
         public static final int home_menu=0x7f090000;
