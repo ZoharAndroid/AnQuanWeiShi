@@ -18,7 +18,7 @@
             android:textSize="28sp" />
         
         <Button 
-            android:onClick="addBlacklist"
+            android:onClick="addBlacklistPopup"
             android:layout_marginTop="3dip"
             android:layout_alignParentRight="true"
             android:background="@drawable/button_selection"
