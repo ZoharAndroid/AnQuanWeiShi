@@ -3,13 +3,13 @@ package com.zzh.phoneguard.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.zzh.phoneguard.db.BlackNameOpenHelper;
-import com.zzh.phoneguard.domain.BlacklistMember;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.zzh.phoneguard.db.BlackNameOpenHelper;
+import com.zzh.phoneguard.domain.BlacklistMember;
 
 /**
  * 黑名单实现类
@@ -126,7 +126,12 @@ public class BlacklistNameDB {
 		}
 		return members;
 	}
-	
+	/**
+	 * 获取数据库中的所有成员
+	 * @param startIndex
+	 * @param number
+	 * @return
+	 */
 	public List<BlacklistMember> getMember(String startIndex, String number){
 		List<BlacklistMember> listMember = new ArrayList<BlacklistMember>();
 		//db.query(TABLENAME, new String[]{BlacklistMember.BLACKLISTNUMBER,BlacklistMember.BLACKLISTMODE}, BlacklistMember.BLACKLISTNUMBER+"=? ", selectionArgs, groupBy, having, orderBy, limit)
@@ -140,11 +145,30 @@ public class BlacklistNameDB {
 		
 		return listMember;
 	}
-	
+	/**
+	 * 数据库总的条目
+	 * @return
+	 */
 	public int getTotal(){
 		Cursor cursor = db.rawQuery("select count(1) from "+TABLENAME, null);
 		cursor.moveToNext();
 		int rows = cursor.getInt(0);
 		return rows;
+	}
+	
+	/**
+	 * 由黑名单号码得到相应的模式
+	 * @param blackNumber
+	 * @return 0:无拦截；1：短信拦截；2、电话拦截；3、电话和短信拦截
+	 */
+	public int getMode(String blackNumber){
+		int mode = 0;
+		//查询数据库
+		Cursor cursor = db.query(BlacklistNameDB.TABLENAME, new String[]{BlacklistMember.BLACKLISTMODE}, BlacklistMember.BLACKLISTNUMBER+"=?", new String[]{blackNumber}, null, null, null);
+		if(cursor.moveToNext()){
+			mode = cursor.getInt(0);
+		}
+		cursor.close();
+		return mode;
 	}
 }

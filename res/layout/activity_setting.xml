@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         setting:content="开机启动拦截关闭@开机启动拦截开启"
-        setting:title="开启启动拦截" />
+        setting:title="开机启动拦截" />
 
     <com.zzh.phoneguard.view.ItemSettingLayout
         android:id="@+id/isl_setting_black"

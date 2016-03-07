@@ -1,6 +1,7 @@
 package com.zzh.phonegurad.splash;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,9 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.zzh.phoneguard.service.BlacklistService;
+import com.zzh.phoneguard.utils.LogUtil;
+import com.zzh.phoneguard.utils.ServiceUtils;
 import com.zzh.phoneguard.view.ItemSettingLayout;
 import com.zzh.shoujiweishi.R;
 
@@ -24,47 +28,79 @@ public class SettingActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		sp = getSharedPreferences(MyContasts.SPNAME, MODE_PRIVATE);
 		initView();
 		initData();
 		initEvent();
 	}
 
 	private void initData() {
-		sp = getSharedPreferences(MyContasts.SPNAME, MODE_PRIVATE);
-		
-		//读取sp中的值
+		// 读取sp中的值
 		isl_updata.setClickStatus(sp.getBoolean(MyContasts.ISAUTOUPDATA, true));
+
+		/**
+		 * 是否开启启动拦截
+		 */
+		isl_lanjie.setClickStatus(sp.getBoolean(MyContasts.ISBOOTBLACKLIST,false));
+		// 判断服务开启了吗？
+		if (ServiceUtils.isServiceRun(SettingActivity.this,
+				BlacklistService.class)) {
+			isl_black.setClickStatus(true);
+		} else {
+			isl_black.setClickStatus(false);
+		}
 	}
 
 	private void initEvent() {
-		// 自动更新
+		/**
+		 * 开机自动启动
+		 */
 		isl_updata.setClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// 判断当前选中的状态
 				isl_updata.setClickStatus(!isl_updata.getClickStatus());
 				// 将状态保存到sp文件中
-				sp.edit().putBoolean(MyContasts.ISAUTOUPDATA,
+				sp.edit()
+						.putBoolean(MyContasts.ISAUTOUPDATA,
 								isl_updata.getClickStatus()).commit();
 
 			}
 		});
-
+		/**
+		 * 开机启动拦截
+		 */
 		isl_lanjie.setClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// 判断当前选中的状态
 				isl_lanjie.setClickStatus(!isl_lanjie.getClickStatus());
+				System.out.println(""+isl_lanjie.getClickStatus());
+				// 将状态保存到sp文件中
+				sp.edit().putBoolean(MyContasts.ISBOOTBLACKLIST,isl_lanjie.getClickStatus()).commit();
 			}
 		});
-
+		/**
+		 * 黑名单拦截
+		 */
 		isl_black.setClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// 判断当前选中的状态
 				isl_black.setClickStatus(!isl_black.getClickStatus());
+				Intent blackServiceIntent = new Intent(SettingActivity.this, BlacklistService.class);
+				// 判断服务是否正在运行
+				if(ServiceUtils.isServiceRun(SettingActivity.this,
+						BlacklistService.class)){
+					// 服务已经开启，就开启这个服务
+					stopService(blackServiceIntent);
+				} else {
+					// 服务已经开启，就停止这个服务
+					startService(blackServiceIntent);
+				}
 			}
+
 		});
+
 		isl_location.setClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -75,8 +111,8 @@ public class SettingActivity extends Activity {
 		isl_watchdog.setClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// 判断当前选中的状态
 				isl_watchdog.setClickStatus(!isl_watchdog.getClickStatus());
+				// 判断当前选中的状态
 			}
 		});
 

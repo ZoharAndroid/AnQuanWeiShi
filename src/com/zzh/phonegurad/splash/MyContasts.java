@@ -9,4 +9,5 @@ public interface MyContasts {
 	String ISCHECKBOXOPEN = "IsCheckBoxOpen";//判断手机保护是否勾选
 	String ISAUTOUPDATA = "IsAutoUpdata";//是否自动更新
 	String MODIFFINDNAME = "ModifFindName";//修改手机防盗名
+	String ISBOOTBLACKLIST = "IsBootBlacklist";//是否开机启动
 }
