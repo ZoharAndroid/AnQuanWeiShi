@@ -2,9 +2,11 @@ package com.zzh.phonegurad.splash;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -14,12 +16,14 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -37,6 +41,8 @@ import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.zzh.phoneguard.domain.VersionJson;
+import com.zzh.phoneguard.utils.CopyFile;
+import com.zzh.phoneguard.utils.LogUtil;
 import com.zzh.phoneguard.utils.ShowToast;
 import com.zzh.shoujiweishi.R;
 
@@ -194,12 +200,39 @@ public class SplashActivity extends Activity {
 		initVersionNumber();// 设置界面中的版本号，从包的类容中读取版本信息
 		startSplashAnimation();// 开始splash界面的动画效果
 		initData();
+		
+		//复制assets目录下的文件
+		//判断文件是否存在
+		if(!isFileExsit("address.db")){
+			new Thread(){
+				public void run() {
+					CopyFile.copyAssetFile(SplashActivity.this,"address.db");
+					LogUtil.v("复制文件", "文件复制完成");
+				};
+			}.start();
+		}
+		
 		//读取sp中的自动加载的标志
 		if(sp.getBoolean(MyContasts.ISAUTOUPDATA, true)){
 			checkVersion();// 连接网络，检查版本信息
 		}else{
 			loadMain();
 		}
+	}
+	
+
+	
+	/**
+	 * 判断文件是/files/目录下是否存在
+	 * 
+	 * @param fileName
+	 * @return
+	 */
+	private boolean isFileExsit(String fileName) {
+		boolean result = false;
+		File file = new File("data/data/"+getPackageName()+"/files/"+fileName);
+		result = file.exists();
+		return result;
 	}
 
 	/**

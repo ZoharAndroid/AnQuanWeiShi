@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="#5500ffdd"
+        android:gravity="center"
+        android:text="号码归属地查询"
+        android:textColor="#000000"
+        android:textSize="28sp" />
+
+    <EditText
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:id="@+id/et_inputPhoneChech_phoneloactioncheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dip"
+        android:hint="请输入要查询的号码" />
+
+    <Button
+        android:onClick="queryPhoneLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="@drawable/button_selection"
+        android:text="查询" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:text="归属地："
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_showPhoneLocation_phoneloactioncheck"
+        android:layout_marginLeft="40dip"
+        android:text="移动联通"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:textSize="24sp"/>
+
+</LinearLayout>

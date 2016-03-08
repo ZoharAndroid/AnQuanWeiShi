@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.zzh.phoneguard.service.BlacklistService;
+import com.zzh.phoneguard.service.PhoneLocationChechService;
 import com.zzh.phoneguard.utils.LogUtil;
 import com.zzh.phoneguard.utils.ServiceUtils;
 import com.zzh.phoneguard.view.ItemSettingLayout;
@@ -75,9 +76,9 @@ public class SettingActivity extends Activity {
 			public void onClick(View v) {
 				// 判断当前选中的状态
 				isl_lanjie.setClickStatus(!isl_lanjie.getClickStatus());
-				System.out.println(""+isl_lanjie.getClickStatus());
 				// 将状态保存到sp文件中
 				sp.edit().putBoolean(MyContasts.ISBOOTBLACKLIST,isl_lanjie.getClickStatus()).commit();
+				//保存了当前状态后，就开始接收开启广播状态
 			}
 		});
 		/**
@@ -106,8 +107,17 @@ public class SettingActivity extends Activity {
 			public void onClick(View v) {
 				// 判断当前选中的状态
 				isl_location.setClickStatus(!isl_location.getClickStatus());
+				if(ServiceUtils.isServiceRun(SettingActivity.this, PhoneLocationChechService.class)){
+					Intent locationService = new Intent(SettingActivity.this , PhoneLocationChechService.class);
+					stopService(locationService);
+				}else {
+					Intent locationService = new Intent(SettingActivity.this , PhoneLocationChechService.class);
+					startService(locationService);
+				}
+			
 			}
 		});
+		
 		isl_watchdog.setClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

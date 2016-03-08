@@ -8,6 +8,10 @@
 package com.zzh.shoujiweishi;
 
 public final class R {
+    public static final class anim {
+        public static final int cycle_7=0x7f040000;
+        public static final int shake=0x7f040001;
+    }
     public static final class attr {
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
@@ -27,14 +31,14 @@ containing a value of this type.
         public static final int title=0x7f010000;
     }
     public static final class color {
-        public static final int blue=0x7f060001;
+        public static final int blue=0x7f070001;
         /**  灰色 
          */
-        public static final int dark=0x7f060003;
-        public static final int green=0x7f060002;
+        public static final int dark=0x7f070003;
+        public static final int green=0x7f070002;
         /**  透明 
          */
-        public static final int transparency=0x7f060000;
+        public static final int transparency=0x7f070000;
     }
     public static final class drawable {
         public static final int app=0x7f020000;
@@ -71,94 +75,98 @@ containing a value of this type.
         public static final int unlock=0x7f02001f;
     }
     public static final class id {
-        public static final int bt_dialog_home_cancelInput=0x7f0a0013;
-        public static final int bt_dialog_home_cancelPassword=0x7f0a0033;
-        public static final int bt_dialog_home_cancelmodif=0x7f0a0026;
-        public static final int bt_dialog_home_ensureInput=0x7f0a0012;
-        public static final int bt_dialog_home_setPassword=0x7f0a0032;
-        public static final int bt_dialog_home_suremodif=0x7f0a0025;
-        public static final int bt_dialog_smstel_cancelSetBlack=0x7f0a002f;
-        public static final int bt_dialog_smstel_sureSetBlack=0x7f0a002e;
-        public static final int cb_dialog_smstel_setPhone=0x7f0a002d;
-        public static final int cb_dialog_smstel_setSms=0x7f0a002c;
-        public static final int cb_item_setteing_open=0x7f0a0018;
-        public static final int cb_setup4_openProtect=0x7f0a000f;
-        public static final int et_dialog_home_input=0x7f0a0011;
-        public static final int et_dialog_home_modifname=0x7f0a0024;
-        public static final int et_dialog_home_password1=0x7f0a0030;
-        public static final int et_dialog_home_password2=0x7f0a0031;
-        public static final int et_dialog_smstel_blackNumber=0x7f0a002b;
-        public static final int et_setup3_safeNumber=0x7f0a000e;
-        public static final int gv_home_jiugongge=0x7f0a0000;
-        public static final int isl_setting_black=0x7f0a0005;
-        public static final int isl_setting_lanjie=0x7f0a0004;
-        public static final int isl_setting_location=0x7f0a0006;
-        public static final int isl_setting_update=0x7f0a0003;
-        public static final int isl_setting_watchdog=0x7f0a0007;
-        public static final int item_modife_lostfind=0x7f0a0034;
-        public static final int item_show_function=0x7f0a0035;
-        public static final int iv_griadview_item_icon=0x7f0a0014;
-        public static final int iv_item_smstel_deleteicon=0x7f0a001b;
-        public static final int iv_setup2_lockIcon=0x7f0a000d;
-        public static final int lv_smstel_listShowData=0x7f0a000c;
-        public static final int pb_smstel_progress=0x7f0a0009;
-        public static final int pb_splash_download=0x7f0a0023;
-        public static final int popup_smstel_contactsAdd=0x7f0a002a;
-        public static final int popup_smstel_phoneAdd=0x7f0a0029;
-        public static final int popup_smstel_shoudongAdd=0x7f0a0027;
-        public static final int popup_smstel_smsAdd=0x7f0a0028;
-        public static final int progressBar1=0x7f0a0022;
-        public static final int rl_lostfind_menu=0x7f0a0002;
-        public static final int rl_smstel_loadingData=0x7f0a0008;
-        public static final int rl_smstel_noData=0x7f0a000a;
-        public static final int rl_smstel_showData=0x7f0a000b;
-        public static final int rl_splash_root=0x7f0a0020;
-        public static final int tv_griadview_item_iconName=0x7f0a0015;
-        public static final int tv_item_contacts_name=0x7f0a001c;
-        public static final int tv_item_contacts_number=0x7f0a001d;
-        public static final int tv_item_setting_desc=0x7f0a0017;
-        public static final int tv_item_setting_title=0x7f0a0016;
-        public static final int tv_item_smsblack_number=0x7f0a001e;
-        public static final int tv_item_smstel_mode=0x7f0a001a;
-        public static final int tv_item_smstel_number=0x7f0a0019;
-        public static final int tv_item_telphoneblack_number=0x7f0a001f;
-        public static final int tv_phonelostfind_showSafeNumber=0x7f0a0001;
-        public static final int tv_setup4_openProtect=0x7f0a0010;
-        public static final int tv_splash_versionNumber=0x7f0a0021;
+        public static final int bt_dialog_home_cancelInput=0x7f0b0013;
+        public static final int bt_dialog_home_cancelPassword=0x7f0b0035;
+        public static final int bt_dialog_home_cancelmodif=0x7f0b0026;
+        public static final int bt_dialog_home_ensureInput=0x7f0b0012;
+        public static final int bt_dialog_home_setPassword=0x7f0b0034;
+        public static final int bt_dialog_home_suremodif=0x7f0b0025;
+        public static final int bt_dialog_smstel_cancelSetBlack=0x7f0b0031;
+        public static final int bt_dialog_smstel_sureSetBlack=0x7f0b0030;
+        public static final int cb_dialog_smstel_setPhone=0x7f0b002f;
+        public static final int cb_dialog_smstel_setSms=0x7f0b002e;
+        public static final int cb_item_setteing_open=0x7f0b0018;
+        public static final int cb_setup4_openProtect=0x7f0b000f;
+        public static final int et_dialog_home_input=0x7f0b0011;
+        public static final int et_dialog_home_modifname=0x7f0b0024;
+        public static final int et_dialog_home_password1=0x7f0b0032;
+        public static final int et_dialog_home_password2=0x7f0b0033;
+        public static final int et_dialog_smstel_blackNumber=0x7f0b002d;
+        public static final int et_inputPhoneChech_phoneloactioncheck=0x7f0b0027;
+        public static final int et_setup3_safeNumber=0x7f0b000e;
+        public static final int gv_home_jiugongge=0x7f0b0000;
+        public static final int isl_setting_black=0x7f0b0005;
+        public static final int isl_setting_lanjie=0x7f0b0004;
+        public static final int isl_setting_location=0x7f0b0006;
+        public static final int isl_setting_update=0x7f0b0003;
+        public static final int isl_setting_watchdog=0x7f0b0007;
+        public static final int item_modife_lostfind=0x7f0b0036;
+        public static final int item_show_function=0x7f0b0037;
+        public static final int iv_griadview_item_icon=0x7f0b0014;
+        public static final int iv_item_smstel_deleteicon=0x7f0b001b;
+        public static final int iv_setup2_lockIcon=0x7f0b000d;
+        public static final int lv_smstel_listShowData=0x7f0b000c;
+        public static final int pb_smstel_progress=0x7f0b0009;
+        public static final int pb_splash_download=0x7f0b0023;
+        public static final int popup_smstel_contactsAdd=0x7f0b002c;
+        public static final int popup_smstel_phoneAdd=0x7f0b002b;
+        public static final int popup_smstel_shoudongAdd=0x7f0b0029;
+        public static final int popup_smstel_smsAdd=0x7f0b002a;
+        public static final int progressBar1=0x7f0b0022;
+        public static final int rl_lostfind_menu=0x7f0b0002;
+        public static final int rl_smstel_loadingData=0x7f0b0008;
+        public static final int rl_smstel_noData=0x7f0b000a;
+        public static final int rl_smstel_showData=0x7f0b000b;
+        public static final int rl_splash_root=0x7f0b0020;
+        public static final int tv_griadview_item_iconName=0x7f0b0015;
+        public static final int tv_item_contacts_name=0x7f0b001c;
+        public static final int tv_item_contacts_number=0x7f0b001d;
+        public static final int tv_item_setting_desc=0x7f0b0017;
+        public static final int tv_item_setting_title=0x7f0b0016;
+        public static final int tv_item_smsblack_number=0x7f0b001e;
+        public static final int tv_item_smstel_mode=0x7f0b001a;
+        public static final int tv_item_smstel_number=0x7f0b0019;
+        public static final int tv_item_telphoneblack_number=0x7f0b001f;
+        public static final int tv_phonelostfind_showSafeNumber=0x7f0b0001;
+        public static final int tv_setup4_openProtect=0x7f0b0010;
+        public static final int tv_showPhoneLocation_phoneloactioncheck=0x7f0b0028;
+        public static final int tv_splash_versionNumber=0x7f0b0021;
     }
     public static final class layout {
-        public static final int activity_home=0x7f030000;
-        public static final int activity_phonelostfind=0x7f030001;
-        public static final int activity_setting=0x7f030002;
-        public static final int activity_smstel=0x7f030003;
-        public static final int activiy_setup1=0x7f030004;
-        public static final int activiy_setup2=0x7f030005;
-        public static final int activiy_setup3=0x7f030006;
-        public static final int activiy_setup4=0x7f030007;
-        public static final int inputpassword_dialog_home=0x7f030008;
-        public static final int item_home_gridview=0x7f030009;
-        public static final int item_setting=0x7f03000a;
-        public static final int item_smstel=0x7f03000b;
-        public static final int itme_contactslist_listactivity=0x7f03000c;
-        public static final int itme_smslist_smslistaddblack=0x7f03000d;
-        public static final int itme_telphonelist_telphonelistaddblack=0x7f03000e;
-        public static final int layout_splash=0x7f03000f;
-        public static final int modiffindname_dialog_home=0x7f030010;
-        public static final int popup_smstel=0x7f030011;
-        public static final int setblacklist_dialog_smstel=0x7f030012;
-        public static final int setpassword_dialog_home=0x7f030013;
+        public static final int activity_atools=0x7f030000;
+        public static final int activity_home=0x7f030001;
+        public static final int activity_phonelostfind=0x7f030002;
+        public static final int activity_setting=0x7f030003;
+        public static final int activity_smstel=0x7f030004;
+        public static final int activiy_setup1=0x7f030005;
+        public static final int activiy_setup2=0x7f030006;
+        public static final int activiy_setup3=0x7f030007;
+        public static final int activiy_setup4=0x7f030008;
+        public static final int inputpassword_dialog_home=0x7f030009;
+        public static final int item_home_gridview=0x7f03000a;
+        public static final int item_setting=0x7f03000b;
+        public static final int item_smstel=0x7f03000c;
+        public static final int itme_contactslist_listactivity=0x7f03000d;
+        public static final int itme_smslist_smslistaddblack=0x7f03000e;
+        public static final int itme_telphonelist_telphonelistaddblack=0x7f03000f;
+        public static final int layout_splash=0x7f030010;
+        public static final int modiffindname_dialog_home=0x7f030011;
+        public static final int phonecheck_atools_activity=0x7f030012;
+        public static final int popup_smstel=0x7f030013;
+        public static final int setblacklist_dialog_smstel=0x7f030014;
+        public static final int setpassword_dialog_home=0x7f030015;
     }
     public static final class menu {
-        public static final int home_menu=0x7f090000;
+        public static final int home_menu=0x7f0a0000;
     }
     public static final class raw {
-        public static final int music=0x7f050000;
+        public static final int music=0x7f060000;
     }
     public static final class string {
-        public static final int app_name=0x7f070001;
-        public static final int ipAddress=0x7f070000;
-        public static final int sample_device_admin=0x7f070003;
-        public static final int sample_device_admin_description=0x7f070002;
+        public static final int app_name=0x7f080001;
+        public static final int ipAddress=0x7f080000;
+        public static final int sample_device_admin=0x7f080003;
+        public static final int sample_device_admin_description=0x7f080002;
     }
     public static final class style {
         /** 
@@ -182,14 +190,14 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080001;
+        public static final int AppTheme=0x7f090001;
     }
     public static final class xml {
-        public static final int device_admin_sample=0x7f040000;
+        public static final int device_admin_sample=0x7f050000;
     }
     public static final class styleable {
         /** Attributes that can be used with a SettingView.

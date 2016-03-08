@@ -1,7 +1,5 @@
 package com.zzh.phonegurad.splash;
 
-import java.lang.reflect.Modifier;
-
 import com.zzh.phoneguard.utils.LogUtil;
 import com.zzh.phoneguard.utils.MD5Util;
 import com.zzh.phoneguard.utils.ShowToast;
@@ -111,6 +109,10 @@ public class HomeActivity extends Activity {
 				case 1://通讯卫士
 					Intent smstelIntent = new Intent(HomeActivity.this, SmsTelActivity.class);
 					startActivity(smstelIntent);
+					break;
+				case 7://高级工具
+					Intent atoolsIntent = new Intent(HomeActivity.this, AToolsActivity.class);
+					startActivity(atoolsIntent);
 					break;
 				case 8:// 进入设置中心
 					Intent settingIntent = new Intent(HomeActivity.this,

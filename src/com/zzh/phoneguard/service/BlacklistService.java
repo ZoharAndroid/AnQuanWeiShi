@@ -10,6 +10,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.ContentObserver;
+import android.net.Uri;
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.telephony.PhoneStateListener;
@@ -76,6 +79,7 @@ public class BlacklistService extends Service {
 				if((blacklistDB.getMode(incomingNumber) & BlacklistMember.BLACK_PHONE)!=0){
 					Log.v("电话广播", "电话已经挂断");
 					//是拦截电话
+					seeCallLog(incomingNumber);
 					endCall();
 				}
 				break;
@@ -88,6 +92,34 @@ public class BlacklistService extends Service {
 				break;
 			}
 		}
+	}
+
+	/**
+	 * 删除电话记录
+	 * @param incomingNumber
+	 */
+	protected void removeCallLog(String incomingNumber) {
+		Uri uri = Uri.parse("content://cal_log/calls");
+		getContentResolver().delete(uri, "number = ?", new String[]{incomingNumber});
+	}
+	
+	/**
+	 * 
+	 * @param incomingNumber
+	 */
+	public void seeCallLog(final String incomingNumber) {
+		ContentObserver observer  = new ContentObserver(new Handler()) {
+			@Override
+			public void onChange(boolean selfChange) {
+				super.onChange(selfChange);
+				removeCallLog(incomingNumber);
+				getContentResolver().unregisterContentObserver(this);
+			}
+			
+		};
+		Uri uri = Uri.parse("content://cal_log/calls");
+		getContentResolver().registerContentObserver(uri, true, observer);
+		
 	}
 
 	/**
