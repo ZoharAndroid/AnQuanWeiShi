@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:setting="http://schemas.android.com/apk/res/com.zzh.shoujiweishi"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -49,5 +48,47 @@
         android:layout_height="wrap_content"
         setting:content="看门狗服务关闭@看门狗服务开启"
         setting:title="看门狗设置中心" />
+
+    <RelativeLayout
+        android:onClick="phoneLocationStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/color_selector"
+        android:clickable="true" >
+
+        <TextView
+            android:id="@+id/tv_item_setting_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginTop="8dip"
+            android:text="电话归属地显示风格"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_item_setting_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_item_setting_name"
+            android:layout_marginLeft="5dip"
+            android:layout_marginTop="5dip"
+            android:text="金属灰"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_marginRight="10dip"
+      		android:src="@drawable/loactionstyle_selector"
+            android:layout_width="25dip"
+            android:layout_height="25dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dip"
+            android:layout_below="@id/tv_item_setting_style"
+            android:layout_marginTop="8dip"
+            android:background="@drawable/list_devider" />
+    </RelativeLayout>
 
 </LinearLayout>

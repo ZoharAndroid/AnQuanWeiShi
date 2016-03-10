@@ -10,4 +10,5 @@ public interface MyContasts {
 	String ISAUTOUPDATA = "IsAutoUpdata";//是否自动更新
 	String MODIFFINDNAME = "ModifFindName";//修改手机防盗名
 	String ISBOOTBLACKLIST = "IsBootBlacklist";//是否开机启动
+	String PHONELOCATIONSTYLE = "PhoneLocationStyle";//手机归属地的显示风格
 }

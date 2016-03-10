@@ -1,6 +1,8 @@
 package com.zzh.phonegurad.splash;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,10 +10,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.zzh.phoneguard.service.BlacklistService;
 import com.zzh.phoneguard.service.PhoneLocationChechService;
-import com.zzh.phoneguard.utils.LogUtil;
 import com.zzh.phoneguard.utils.ServiceUtils;
 import com.zzh.phoneguard.view.ItemSettingLayout;
 import com.zzh.shoujiweishi.R;
@@ -25,6 +27,7 @@ public class SettingActivity extends Activity {
 	private ItemSettingLayout isl_black;// 黑名单拦截
 	private ItemSettingLayout isl_location;// 电话归属地
 	private ItemSettingLayout isl_watchdog;// 看门狗服务
+	private TextView tv_style;//归属地样式
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +46,28 @@ public class SettingActivity extends Activity {
 		 * 是否开启启动拦截
 		 */
 		isl_lanjie.setClickStatus(sp.getBoolean(MyContasts.ISBOOTBLACKLIST,false));
-		// 判断服务开启了吗？
+		/**
+		 * 判断黑名单服务开启了吗？
+		 */
 		if (ServiceUtils.isServiceRun(SettingActivity.this,
 				BlacklistService.class)) {
 			isl_black.setClickStatus(true);
 		} else {
 			isl_black.setClickStatus(false);
 		}
+		/**
+		 * 归属地开启
+		 */
+		if(ServiceUtils.isServiceRun(SettingActivity.this, PhoneLocationChechService.class)){
+			isl_black.setClickStatus(true);
+		}else{
+			isl_black.setClickStatus(false);
+		}
+		/**
+		 * 归属地样式风格
+		 */
+		tv_style.setText(items[sp.getInt(MyContasts.PHONELOCATIONSTYLE, 0)]);
+		
 	}
 
 	private void initEvent() {
@@ -127,6 +145,29 @@ public class SettingActivity extends Activity {
 		});
 
 	}
+	
+	/**
+	 * 点击事件：来电归属地样式风格选择
+	 * @param view
+	 */
+	private String[] items = new String[]{"金属灰","苹果绿","天空蓝","果粒橙","透明白"};
+	
+	public void phoneLocationStyle(View view){
+		AlertDialog.Builder styleDialog = new AlertDialog.Builder(this);
+		styleDialog.setSingleChoiceItems(items, sp.getInt(MyContasts.PHONELOCATIONSTYLE, 0),new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				//储存用户选择的颜色
+				sp.edit().putInt(MyContasts.PHONELOCATIONSTYLE, which).commit();
+				//改变setting界面归属地风格
+				tv_style.setText(items[which]);
+				dialog.dismiss();
+			}
+		});
+		
+		styleDialog.show();
+	}
 
 	private void initView() {
 		// 全屏
@@ -141,6 +182,8 @@ public class SettingActivity extends Activity {
 		isl_black = (ItemSettingLayout) findViewById(R.id.isl_setting_black);
 		isl_location = (ItemSettingLayout) findViewById(R.id.isl_setting_location);
 		isl_watchdog = (ItemSettingLayout) findViewById(R.id.isl_setting_watchdog);
+		
+		tv_style = (TextView) findViewById(R.id.tv_item_setting_style);
 	}
 
 }
