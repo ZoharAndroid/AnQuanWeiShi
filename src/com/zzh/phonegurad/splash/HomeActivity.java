@@ -110,6 +110,10 @@ public class HomeActivity extends Activity {
 					Intent smstelIntent = new Intent(HomeActivity.this, SmsTelActivity.class);
 					startActivity(smstelIntent);
 					break;
+				case 2://软件管家
+					Intent appIntent = new Intent(HomeActivity.this, AppManageActiviy.class);
+					startActivity(appIntent);
+					break;
 				case 7://高级工具
 					Intent atoolsIntent = new Intent(HomeActivity.this, AToolsActivity.class);
 					startActivity(atoolsIntent);

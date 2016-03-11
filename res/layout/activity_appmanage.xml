@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="#5500ffdd"
+        android:gravity="center"
+        android:text="软件管理"
+        android:textColor="#000000"
+        android:textSize="28sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:id="@+id/rl_appmanage_firstloading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" >
+
+            <ProgressBar
+                android:id="@+id/pb_appmanage_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pb_appmanage_progress"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dip"
+                android:text="正在加载"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_appmanage_show"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/tv_appmanage_rom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机内存：xxM"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_appmanage_sdcard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_appmanage_rom"
+                android:text="SD卡容量：xxM"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_appmanage_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_appmanage_rom"
+                android:background="#ff888888"
+                android:text="个人软件"
+                android:textColor="#ffffffff" />
+
+            <ListView
+                android:id="@+id/lv_appmanage_showapp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_appmanage_rom" >
+            </ListView>
+        </RelativeLayout>
+    </FrameLayout>
+
+</LinearLayout>

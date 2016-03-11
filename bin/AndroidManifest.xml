@@ -4,7 +4,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="9"
         android:targetSdkVersion="16" />
 
     <instrumentation
@@ -71,6 +71,7 @@
         </activity>
         <activity android:name="com.zzh.phonegurad.splash.PhoneLocationCheckActivity" >
         </activity>
+        <activity android:name="com.zzh.phonegurad.splash.AppManageActiviy"></activity>
         <!-- 广播接收器 -->
         <receiver android:name="com.zzh.phoneguard.receiver.SmsMessageRecevier" >
             <intent-filter android:priority="214748364" >
