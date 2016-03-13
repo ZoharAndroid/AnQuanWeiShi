@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:clickable="true"
+    android:id="@+id/rl_item_task_list"
+    android:background="@drawable/color_selector"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <ImageView
+        android:layout_marginLeft="5dip"
+        android:id="@+id/iv_item_taskmanage_icon"
+        android:layout_width="55dip"
+        android:layout_height="55dip" />
+
+    <TextView
+        android:layout_marginTop="4dip"
+        android:layout_marginLeft="8dip"
+        android:id="@+id/tv_item_taskmanage_appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_item_taskmanage_icon"
+        android:text="软件名"
+        android:textSize="16sp" />
+
+    <TextView
+        android:gravity="center"
+        android:layout_alignBottom="@id/iv_item_taskmanage_icon"
+        android:layout_marginLeft="8dip"
+        android:layout_marginTop="2dip"
+        android:id="@+id/tv_item_taskmanage_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_item_taskmanage_appName"
+        android:layout_toRightOf="@id/iv_item_taskmanage_icon"
+        android:text="占用内存:50MB"
+        android:textSize="14sp" />
+
+    <CheckBox
+        android:clickable="false"
+        android:layout_marginRight="8dip"
+        android:id="@+id/cb_item_taskmanage_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>

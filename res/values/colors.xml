@@ -8,4 +8,7 @@
     <color name="green">#ff6BD123</color>
     <!-- 灰色 -->
     <color name="dark">#ffA7C0DC</color>
+    
+    <color name="textColorPrimary">#ffffffff</color>
+    <color name="white">#ffffffff</color>
 </resources>

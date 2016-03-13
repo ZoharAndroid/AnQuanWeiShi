@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_taskmanage_showtask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/color_selector"
+        android:clickable="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dip"
+            android:text="隐藏系统进程"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/cb_tasksetting_hide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="false" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dip"
+        android:layout_marginTop="3dip"
+        android:background="@drawable/list_devider" />
+
+    <RelativeLayout
+        android:id="@+id/rl_taskmanage_cleartask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/color_selector"
+        android:clickable="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dip"
+            android:text="锁屏清理进程"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/cb_tasksetting_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="false" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dip"
+        android:layout_marginTop="3dip"
+        android:background="@drawable/list_devider" />
+
+</LinearLayout>

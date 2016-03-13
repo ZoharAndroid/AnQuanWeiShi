@@ -11,4 +11,5 @@ public interface MyContasts {
 	String MODIFFINDNAME = "ModifFindName";//修改手机防盗名
 	String ISBOOTBLACKLIST = "IsBootBlacklist";//是否开机启动
 	String PHONELOCATIONSTYLE = "PhoneLocationStyle";//手机归属地的显示风格
+	String ISHIDESYSTEMTASK = "IsHideSystemTask";//是否隐藏系统进程
 }

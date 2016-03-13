@@ -16,5 +16,10 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    <style name="widget_text">
+        <item name="android:textSize">16.0dip</item>
+        <item name="android:textColor">@color/textColorPrimaryDark</item>
+    </style>
 
 </resources>
