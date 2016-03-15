@@ -211,6 +211,15 @@ public class SplashActivity extends Activity {
 				};
 			}.start();
 		}
+		//复制病毒库
+		if(!isFileExsit("antivirus.db")){
+			new Thread(){
+				public void run() {
+					CopyFile.copyAssetFile(SplashActivity.this,"antivirus.db");
+					LogUtil.v("复制文件", "文件复制完成");
+				};
+			}.start();
+		}
 		
 		//读取sp中的自动加载的标志
 		if(sp.getBoolean(MyContasts.ISAUTOUPDATA, true)){

@@ -78,6 +78,8 @@
         </activity>
         <activity android:name="com.zzh.phonegurad.splash.TaskSettingActivity" >
         </activity>
+        <activity android:name="com.zzh.phonegurad.splash.AntiVirusActivity" >
+        </activity>
         <!-- 广播接收器 -->
         <receiver android:name="com.zzh.phoneguard.receiver.SmsMessageRecevier" >
             <intent-filter android:priority="214748364" >
@@ -89,7 +91,6 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        
         <receiver
             android:name="com.zzh.phoneguard.receiver.MyDeviceAdminReceiver"
             android:description="@string/sample_device_admin_description"
@@ -103,17 +104,8 @@
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
-        
-        <receiver android:name="com.zzh.phoneguard.receiver.MyAppWidgetProvider" >
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
+       
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/process_widget_provider" />
-        </receiver>
-        
         <!-- 服务 -->
         <service android:name="com.zzh.phoneguard.service.LocationService" >
         </service>

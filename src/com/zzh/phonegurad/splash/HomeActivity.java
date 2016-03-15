@@ -1,10 +1,5 @@
 package com.zzh.phonegurad.splash;
 
-import com.zzh.phoneguard.utils.LogUtil;
-import com.zzh.phoneguard.utils.MD5Util;
-import com.zzh.phoneguard.utils.ShowToast;
-import com.zzh.shoujiweishi.R;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,11 +8,11 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -30,6 +25,11 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zzh.phoneguard.utils.LogUtil;
+import com.zzh.phoneguard.utils.MD5Util;
+import com.zzh.phoneguard.utils.ShowToast;
+import com.zzh.shoujiweishi.R;
+
 public class HomeActivity extends Activity {
 
 	public static final String TAG = "HomeActivity";
@@ -41,15 +41,14 @@ public class HomeActivity extends Activity {
 	private SharedPreferences sp;// 保存设置的密码
 
 	private GridView gv_jiugongge;// 九宫格显示
-	
-	private GridViewAdapter adapter;//适配器
 
-	
+	private GridViewAdapter adapter;// 适配器
+
 	String[] iconName = new String[] { "手机防盗", "通讯卫士", "软件管家", "进程管理", "流量统计",
 			"手机杀毒", "缓存清理", "高级工具", "设置中心" };
 	int[] icon = new int[] { R.drawable.safe, R.drawable.callmsgsafe,
 			R.drawable.icon_selector, R.drawable.taskmanager,
-			R.drawable.netmanager, R.drawable.safe, R.drawable.sysoptimize,
+			R.drawable.netmanager, R.drawable.trojan, R.drawable.sysoptimize,
 			R.drawable.atools, R.drawable.settings };
 
 	@Override
@@ -59,16 +58,14 @@ public class HomeActivity extends Activity {
 		initData();// 初始化界面数据
 		processClickEvent();
 	}
-	
 
 	@Override
 	protected void onResume() {
-		//通知适配器，重新检索数据
+		// 通知适配器，重新检索数据
 		super.onResume();
 		System.out.println("onResume");
 		adapter.notifyDataSetChanged();
 	}
-
 
 	private void initData() {
 		adapter = new GridViewAdapter();
@@ -106,20 +103,30 @@ public class HomeActivity extends Activity {
 						showSetPasswordDialog();
 					}
 					break;
-				case 1://通讯卫士
-					Intent smstelIntent = new Intent(HomeActivity.this, SmsTelActivity.class);
+				case 1:// 通讯卫士
+					Intent smstelIntent = new Intent(HomeActivity.this,
+							SmsTelActivity.class);
 					startActivity(smstelIntent);
 					break;
-				case 2://软件管家
-					Intent appIntent = new Intent(HomeActivity.this, AppManageActiviy.class);
+				case 2:// 软件管家
+					Intent appIntent = new Intent(HomeActivity.this,
+							AppManageActiviy.class);
 					startActivity(appIntent);
 					break;
-				case 3://进程管理
-					Intent taskIntent =new Intent(HomeActivity.this, TaskManageActivity.class);
+				case 3:// 进程管理
+					Intent taskIntent = new Intent(HomeActivity.this,
+							TaskManageActivity.class);
 					startActivity(taskIntent);
 					break;
-				case 7://高级工具
-					Intent atoolsIntent = new Intent(HomeActivity.this, AToolsActivity.class);
+
+				case 5:// 手机杀毒
+					Intent virusIntent = new Intent(HomeActivity.this,
+							AntiVirusActivity.class);
+					startActivity(virusIntent);
+					break;
+				case 7:// 高级工具
+					Intent atoolsIntent = new Intent(HomeActivity.this,
+							AToolsActivity.class);
 					startActivity(atoolsIntent);
 					break;
 				case 8:// 进入设置中心
@@ -325,10 +332,13 @@ public class HomeActivity extends Activity {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			ViewHolder viewHolder = null;
 			if (convertView == null) {
-				convertView = View.inflate(HomeActivity.this,R.layout.item_home_gridview, null);
+				convertView = View.inflate(HomeActivity.this,
+						R.layout.item_home_gridview, null);
 				viewHolder = new ViewHolder();
-				viewHolder.iv = (ImageView) convertView.findViewById(R.id.iv_griadview_item_icon);
-				viewHolder.tv = (TextView) convertView.findViewById(R.id.tv_griadview_item_iconName);
+				viewHolder.iv = (ImageView) convertView
+						.findViewById(R.id.iv_griadview_item_icon);
+				viewHolder.tv = (TextView) convertView
+						.findViewById(R.id.tv_griadview_item_iconName);
 				convertView.setTag(viewHolder);// 将viewHolder储存在view中
 			} else {
 				viewHolder = (ViewHolder) convertView.getTag();// 从view中获取到ViewHolder
@@ -339,17 +349,18 @@ public class HomeActivity extends Activity {
 			/**
 			 * 判断用户是否修改了图标名字
 			 */
-			if(position==0){//如果位于第一个图标
-				//然后判断sp中储存的修改名字是否为空，如果不为空，就加载新修改的名字
+			if (position == 0) {// 如果位于第一个图标
+				// 然后判断sp中储存的修改名字是否为空，如果不为空，就加载新修改的名字
 				sp = getSharedPreferences(MyContasts.SPNAME, MODE_PRIVATE);
-				String modifNewName = sp.getString(MyContasts.MODIFFINDNAME, "");
-				if(TextUtils.isEmpty(modifNewName)){
-					//如果为空，不进行操作
-				}else{
-					//如果不为空，加载新的名字
+				String modifNewName = sp
+						.getString(MyContasts.MODIFFINDNAME, "");
+				if (TextUtils.isEmpty(modifNewName)) {
+					// 如果为空，不进行操作
+				} else {
+					// 如果不为空，加载新的名字
 					viewHolder.tv.setText(modifNewName);
 				}
-				
+
 			}
 
 			return convertView;
@@ -389,60 +400,65 @@ public class HomeActivity extends Activity {
 		}
 		return true;
 	}
-	
 
 	/**
 	 * 弹出修改手机防盗名对话框
 	 */
 	private void showModifFindNameDialog() {
-		AlertDialog.Builder modifDialog = new AlertDialog.Builder(HomeActivity.this);
-		View modifView = View.inflate(HomeActivity.this, R.layout.modiffindname_dialog_home, null);
-		//找到对话框布局中的控件
-		final EditText et_modfiName = (EditText) modifView.findViewById(R.id.et_dialog_home_modifname);
-		Button bt_sureModif = (Button) modifView.findViewById(R.id.bt_dialog_home_suremodif);
-		Button bt_canselModif = (Button) modifView.findViewById(R.id.bt_dialog_home_cancelmodif);
-		
+		AlertDialog.Builder modifDialog = new AlertDialog.Builder(
+				HomeActivity.this);
+		View modifView = View.inflate(HomeActivity.this,
+				R.layout.modiffindname_dialog_home, null);
+		// 找到对话框布局中的控件
+		final EditText et_modfiName = (EditText) modifView
+				.findViewById(R.id.et_dialog_home_modifname);
+		Button bt_sureModif = (Button) modifView
+				.findViewById(R.id.bt_dialog_home_suremodif);
+		Button bt_canselModif = (Button) modifView
+				.findViewById(R.id.bt_dialog_home_cancelmodif);
+
 		/**
 		 * 按键:用户确认修改手机防盗名字
-		*/
+		 */
 		bt_sureModif.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				//判断用户是否修改了当前的值
+				// 判断用户是否修改了当前的值
 				String modifName = et_modfiName.getText().toString().trim();
-				if(TextUtils.isEmpty(modifName)){
-					//用户没有修改
+				if (TextUtils.isEmpty(modifName)) {
+					// 用户没有修改
 					ShowToast.showToast(HomeActivity.this, "请输入要修改的名字", 0);
 					return;
 				}
-				//修改了，就保存当前的用户提交的名字
-				//保存到sp文件中
-				sp=getSharedPreferences(MyContasts.SPNAME, MODE_PRIVATE);
-				sp.edit().putString(MyContasts.MODIFFINDNAME, modifName).commit();
-				//然后撤销该对话框
+				// 修改了，就保存当前的用户提交的名字
+				// 保存到sp文件中
+				sp = getSharedPreferences(MyContasts.SPNAME, MODE_PRIVATE);
+				sp.edit().putString(MyContasts.MODIFFINDNAME, modifName)
+						.commit();
+				// 然后撤销该对话框
 				dialog.dismiss();
-				onResume();//恢复活动
+				onResume();// 恢复活动
 			}
 		});
-		
+
 		/**
 		 * 按键：用户取消修改手机防盗名字
 		 */
 		bt_canselModif.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				//直接撤销该会话框
+				// 直接撤销该会话框
 				dialog.dismiss();
 			}
 		});
-		
-		//将界面自定义对话加到到标准对话框中
+
+		// 将界面自定义对话加到到标准对话框中
 		modifDialog.setView(modifView);
 		dialog = modifDialog.create();
 		dialog.show();
-		
+
 	}
 
 }
