@@ -43,6 +43,7 @@ import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.RootToolsException;
 import com.zzh.phoneguard.dao.AppManageDao;
 import com.zzh.phoneguard.domain.AppInfo;
+import com.zzh.phoneguard.utils.DensityUtil;
 import com.zzh.phoneguard.utils.ShowToast;
 import com.zzh.shoujiweishi.R;
 
@@ -127,7 +128,9 @@ public class AppManageActiviy extends Activity implements View.OnClickListener {
 		// popup显示的位置
 		int[] location = new int[2];
 		parent.getLocationInWindow(location);
-		pw.showAtLocation(parent, Gravity.TOP | Gravity.LEFT, location[0] + 50,
+		int dip = 60;
+		int px = DensityUtil.dip2px(AppManageActiviy.this, dip);
+		pw.showAtLocation(parent, Gravity.TOP | Gravity.LEFT, location[0] + px,
 				location[1]);
 
 	}
@@ -285,6 +288,8 @@ public class AppManageActiviy extends Activity implements View.OnClickListener {
 			@Override
 			public void onScroll(AbsListView view, int firstVisibleItem,
 					int visibleItemCount, int totalItemCount) {
+				//一滑动就关闭popupwindow
+				closePopupWindow();
 				if (firstVisibleItem >= userApps.size() + 1) {
 					tv_tag.setText("系统软件:(" + systemApps.size() + ")");
 				} else {
@@ -493,6 +498,7 @@ public class AppManageActiviy extends Activity implements View.OnClickListener {
 	protected void onDestroy() {
 		super.onDestroy();
 		closePopupWindow();
+		unregisterReceiver(recevier);
 	}
 
 }

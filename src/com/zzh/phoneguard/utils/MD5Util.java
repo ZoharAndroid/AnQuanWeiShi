@@ -42,7 +42,7 @@ public class MD5Util {
 		StringBuffer result = new StringBuffer();
 		//首先获取MD5的处理方法
 		try {
-			MessageDigest instance = MessageDigest.getInstance("md5");
+			MessageDigest instance = MessageDigest.getInstance("MD5");
 			FileInputStream fis = new FileInputStream(file);
 			byte[] bts  = new byte[1024];
 			int len = 0;

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="#5500ffdd"
+        android:gravity="center"
+        android:text="流量统计"
+        android:textColor="#000000"
+        android:textSize="28sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ListView
+            android:visibility="gone"
+            android:id="@+id/lv_tranfic_activity_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/pb_tranfic_activity_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_gravity="center"/>
+    </FrameLayout>
+
+</LinearLayout>

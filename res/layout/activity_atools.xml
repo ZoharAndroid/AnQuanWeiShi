@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
 
     <TextView
         android:layout_width="match_parent"
@@ -14,15 +13,14 @@
         android:textColor="#000000"
         android:textSize="28sp" />
 
-
     <LinearLayout
-        android:clickable="true"
-        android:background="@drawable/color_selector"
-        android:onClick="phoneLocationCheck"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dip"
+        android:background="@drawable/color_selector"
+        android:clickable="true"
         android:gravity="center"
+        android:onClick="phoneLocationCheck"
         android:orientation="horizontal" >
 
         <ImageView
@@ -39,13 +37,13 @@
     </LinearLayout>
 
     <LinearLayout
-         android:clickable="true"
-        android:background="@drawable/color_selector"
-        android:onClick="smsBackup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dip"
+        android:background="@drawable/color_selector"
+        android:clickable="true"
         android:gravity="center"
+        android:onClick="smsBackup"
         android:orientation="horizontal" >
 
         <ImageView
@@ -61,14 +59,21 @@
             android:textSize="18sp" />
     </LinearLayout>
 
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/pb_atools_activity_backup"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
-         android:clickable="true"
-        android:background="@drawable/color_selector"
-        android:onClick="smsResume"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dip"
+        android:background="@drawable/color_selector"
+        android:clickable="true"
         android:gravity="center"
+        android:onClick="smsResume"
         android:orientation="horizontal" >
 
         <ImageView
@@ -84,14 +89,21 @@
             android:textSize="18sp" />
     </LinearLayout>
 
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/pb_atools_activity_resume"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
-         android:clickable="true"
-        android:background="@drawable/color_selector"
-        android:onClick="appLock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dip"
+        android:background="@drawable/color_selector"
+        android:clickable="true"
         android:gravity="center"
+        android:onClick="appLock"
         android:orientation="horizontal" >
 
         <ImageView
@@ -104,6 +116,29 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dip"
             android:text="程序锁"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip"
+        android:background="@drawable/color_selector"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="chouTiMenu"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/star_big_on" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:text="抽屉菜单"
             android:textSize="18sp" />
     </LinearLayout>
 

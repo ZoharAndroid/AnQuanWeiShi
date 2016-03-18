@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="#5500ffdd"
+        android:gravity="center"
+        android:text="缓存清理"
+        android:textColor="#000000"
+        android:textSize="28sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/ll_cache_activity_show"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/tv_cache_activity_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/dark"
+                android:text="1款软件有缓存，共xMB" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1" >
+
+                <LinearLayout
+                    android:id="@+id/ll_activity_cache_contain"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+                </LinearLayout>
+            </ScrollView>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_selection"
+                android:onClick="clearCache"
+                android:text="清除所有缓存" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_cache_activity_nodata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="没有要清理的缓存"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/rl_cache_activity_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ProgressBar
+                android:id="@+id/pb_cache_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pb_cache_progress"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dip"
+                android:text="正在加载"
+                android:textSize="16sp" />
+        </RelativeLayout>
+    </FrameLayout>
+
+</LinearLayout>

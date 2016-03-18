@@ -14,81 +14,92 @@
         android:textColor="#000000"
         android:textSize="28sp" />
 
-    <com.zzh.phoneguard.view.ItemSettingLayout
-        android:id="@+id/isl_setting_update"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        setting:content="自动更新已经关闭@自动更新已经关闭"
-        setting:title="自动更新设置" />
+        android:layout_height="match_parent" >
 
-    <com.zzh.phoneguard.view.ItemSettingLayout
-        android:id="@+id/isl_setting_lanjie"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        setting:content="开机启动拦截关闭@开机启动拦截开启"
-        setting:title="开机启动拦截" />
-
-    <com.zzh.phoneguard.view.ItemSettingLayout
-        android:id="@+id/isl_setting_black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        setting:content="黑名单拦截关闭@黑名单拦截开启"
-        setting:title="黑名单拦截设置" />
-
-    <com.zzh.phoneguard.view.ItemSettingLayout
-        android:id="@+id/isl_setting_location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        setting:content="电话归属地设置关闭@电话归属地设置开启"
-        setting:title="电话归属地设置" />
-
-    <com.zzh.phoneguard.view.ItemSettingLayout
-        android:id="@+id/isl_setting_watchdog"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        setting:content="看门狗服务关闭@看门狗服务开启"
-        setting:title="看门狗设置中心" />
-
-    <RelativeLayout
-        android:onClick="phoneLocationStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/color_selector"
-        android:clickable="true" >
-
-        <TextView
-            android:id="@+id/tv_item_setting_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dip"
-            android:layout_marginTop="8dip"
-            android:text="电话归属地显示风格"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/tv_item_setting_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_item_setting_name"
-            android:layout_marginLeft="5dip"
-            android:layout_marginTop="5dip"
-            android:text="金属灰"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:layout_marginRight="10dip"
-      		android:src="@drawable/loactionstyle_selector"
-            android:layout_width="25dip"
-            android:layout_height="25dip"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" />
-
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="2dip"
-            android:layout_below="@id/tv_item_setting_style"
-            android:layout_marginTop="8dip"
-            android:background="@drawable/list_devider" />
-    </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.zzh.phoneguard.view.ItemSettingLayout
+                android:id="@+id/isl_setting_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                setting:content="自动更新已经关闭@自动更新已经关闭"
+                setting:title="自动更新设置" />
+
+            <com.zzh.phoneguard.view.ItemSettingLayout
+                android:id="@+id/isl_setting_lanjie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                setting:content="开机启动拦截关闭@开机启动拦截开启"
+                setting:title="开机启动拦截" />
+
+            <com.zzh.phoneguard.view.ItemSettingLayout
+                android:id="@+id/isl_setting_black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                setting:content="黑名单拦截关闭@黑名单拦截开启"
+                setting:title="黑名单拦截设置" />
+
+            <com.zzh.phoneguard.view.ItemSettingLayout
+                android:id="@+id/isl_setting_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                setting:content="电话归属地设置关闭@电话归属地设置开启"
+                setting:title="电话归属地设置" />
+
+            <com.zzh.phoneguard.view.ItemSettingLayout
+                android:id="@+id/isl_setting_watchdog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                setting:content="看门狗服务关闭@看门狗服务开启"
+                setting:title="看门狗设置中心" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/color_selector"
+                android:clickable="true"
+                android:onClick="phoneLocationStyle" >
+
+                <TextView
+                    android:id="@+id/tv_item_setting_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginTop="8dip"
+                    android:text="电话归属地显示风格"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_item_setting_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_item_setting_name"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginTop="5dip"
+                    android:text="金属灰"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="25dip"
+                    android:layout_height="25dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dip"
+                    android:src="@drawable/loactionstyle_selector" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dip"
+                    android:layout_below="@id/tv_item_setting_style"
+                    android:layout_marginTop="8dip"
+                    android:background="@drawable/list_devider" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

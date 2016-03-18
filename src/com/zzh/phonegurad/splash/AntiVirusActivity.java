@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.Interpolator;
@@ -21,29 +20,80 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.zzh.phoneguard.dao.AntiVirusDao;
 import com.zzh.phoneguard.dao.AppManageDao;
 import com.zzh.phoneguard.domain.AppInfo;
 import com.zzh.phoneguard.utils.LogUtil;
+import com.zzh.phoneguard.utils.ShowToast;
 import com.zzh.shoujiweishi.R;
 
 public class AntiVirusActivity extends Activity {
 	private ImageView iv_scanner;
 	private TextView tv_desc;
 	private ProgressBar pb_running;
-	private Object ll_contain;
+	private LinearLayout ll_contain;
 	private boolean isback=false;//是否按下返回按钮
 	
 	public static final  int SCANNER = 1 ;
 	public static final int FINISH = 2;
+	public static final  int FAILURE = 3;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		initView();
-		scan();
+		//然后联网检查是否要更新病毒数据库
+		checkVirusVersion();
+		//scan();
 	}
 
+	private void checkVirusVersion() {
+		new Thread(){
+			public void run() {
+				//1、联网检查是否有要更新的版本
+				HttpUtils http = new HttpUtils();
+				//设置请求时间
+				http.configTimeout(5000);
+				//发送请求
+				http.send(HttpMethod.GET, getResources().getString(R.string.ipVirus), new RequestCallBack<String>() {
+
+					/**
+					 * 失败了
+					 */
+					@Override
+					public void onFailure(HttpException arg0, String arg1) {
+						ShowToast.showToast(AntiVirusActivity.this, "更新失败", 0);
+						Message msg = new Message();
+						msg.what = FAILURE;
+						handler.sendMessage(msg);
+						//继续扫描
+					}
+
+					@Override
+					public void onSuccess(ResponseInfo<String> arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+				});
+				//2、有：提示用户是否更新病毒库，否：直接扫描
+				//3、用户需要更新版本库，
+				//4、获取新的版本库，更新后，再扫描
+			};
+		}.start();
+	}
+
+	/**
+	 * 一个查询的列表
+	 * 
+	 * @author Administrator
+	 *
+	 */
 	private class AppData{
 		private String name;//软件名字
 		private String desc;//扫描信息
@@ -66,16 +116,23 @@ public class AntiVirusActivity extends Activity {
 				iv_icon.setImageDrawable(data.icon);
 				tv_appname.setText(data.name);
 				
-				if(data.desc != null){
+				if(data.desc == ""){
+					tv_appname.setTextColor(Color.BLACK);
+					iv_security.setImageResource(R.drawable.list_icon_security);
+				}else{
+					LogUtil.d("AntiVirusActivity", "<<<<<<<<<<<<<"+data.desc);
 					tv_appname.setTextColor(Color.RED);
 					iv_security.setImageResource(R.drawable.list_icon_risk);
 				}
-				((ViewGroup) ll_contain).addView(view, 0 );
+				ll_contain.addView(view, 0 );
 				
 				break;
 			case FINISH:// 完成扫描
 				iv_scanner.clearAnimation();
 				Toast.makeText(AntiVirusActivity.this, "扫描完成", 1).show();
+				break;
+			case FAILURE:
+				scan();//继续扫描
 				break;
 			default:
 				break;
@@ -84,7 +141,7 @@ public class AntiVirusActivity extends Activity {
 	};
 	
 
-		/**
+	/**
 	 * 开始扫描
 	 */
 	private void scan() {
@@ -107,6 +164,7 @@ public class AntiVirusActivity extends Activity {
 					Message msg = new Message();
 					msg.what = SCANNER;
 					msg.obj = data;
+					
 					handler.sendMessage(msg);
 					pb_running.setProgress(++number);
 				}

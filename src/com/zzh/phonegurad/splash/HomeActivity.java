@@ -118,12 +118,21 @@ public class HomeActivity extends Activity {
 							TaskManageActivity.class);
 					startActivity(taskIntent);
 					break;
-
+				case 4:// 流量统计
+					Intent tranficIntent = new Intent(HomeActivity.this,
+							TranficActivity.class);
+					startActivity(tranficIntent);
+					break;
 				case 5:// 手机杀毒
 					Intent virusIntent = new Intent(HomeActivity.this,
 							AntiVirusActivity.class);
 					startActivity(virusIntent);
 					break;
+				case 6:// 缓存清理
+					Intent cacheIntent = new Intent(HomeActivity.this,
+							CacheActivity.class);
+					startActivity(cacheIntent);
+					break;	
 				case 7:// 高级工具
 					Intent atoolsIntent = new Intent(HomeActivity.this,
 							AToolsActivity.class);

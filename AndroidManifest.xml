@@ -29,6 +29,8 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WRITE_SMS" />
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
 
     <application
         android:allowBackup="true"
@@ -80,6 +82,11 @@
         </activity>
         <activity android:name="com.zzh.phonegurad.splash.AntiVirusActivity" >
         </activity>
+        <activity android:name="com.zzh.phonegurad.splash.CacheActivity" >
+        </activity>
+        <activity android:name="com.zzh.phonegurad.splash.TranficActivity" >
+        </activity>
+        <activity android:name="com.zzh.phonegurad.splash.ChouTiActivity"></activity>
         <!-- 广播接收器 -->
         <receiver android:name="com.zzh.phoneguard.receiver.SmsMessageRecevier" >
             <intent-filter android:priority="214748364" >
@@ -104,7 +111,6 @@
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
-       
 
         <!-- 服务 -->
         <service android:name="com.zzh.phoneguard.service.LocationService" >

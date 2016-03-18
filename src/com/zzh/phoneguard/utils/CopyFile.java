@@ -42,7 +42,6 @@ public class CopyFile {
 			int len = 0;
 			while ((len = is.read(buffer)) != -1) {
 				os.write(buffer, 0, len);
-				len = is.read(buffer);
 			}
 			is.close();
 			os.close();
